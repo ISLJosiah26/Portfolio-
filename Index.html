@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio — Digital Marketing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+:root {
+  --green: #1a4a2e;
+  --green-mid: #2d6e47;
+  --green-light: #4a9e68;
+  --green-pale: #d6ede0;
+  --cream: #f7f4ef;
+  --ink: #1a1a18;
+  --ink-mid: #3d3d38;
+  --ink-muted: #888882;
+  --border: #e0dbd2;
+  --white: #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ---- NAV ---- */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 3rem;
+  background: rgba(247, 244, 239, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.nav-logo span { color: var(--green-mid); }
+.nav-links { display: flex; gap: 2.5rem; }
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--green-mid); }
+.nav-cta {
+  background: var(--green);
+  color: var(--white) !important;
+  padding: 0.55rem 1.4rem;
+  border-radius: 2rem;
+}
+.nav-cta:hover { background: var(--green-mid); color: var(--white) !important; }
+
+/* ---- HERO ---- */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 8rem 3rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 4rem;
+}
+.hero-text { animation: fadeUp 0.9s ease both; }
+.hero-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  border: 1px solid var(--green-light);
+  padding: 0.35rem 0.9rem;
+  border-radius: 2rem;
+  margin-bottom: 1.8rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--green-mid);
+}
+.hero-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  max-width: 440px;
+  margin-bottom: 2.5rem;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--green);
+  color: var(--white);
+  padding: 0.85rem 2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--green-mid); transform: translateY(-1px); }
+.btn-secondary {
+  border: 1.5px solid var(--green-mid);
+  color: var(--green-mid);
+  padding: 0.85rem 2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { background: var(--green-pale); }
+
+.hero-visual {
+  position: relative;
+  animation: fadeUp 0.9s 0.2s ease both;
+}
+.hero-card {
+  background: var(--white);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-shadow: 0 20px 60px rgba(26,74,46,0.1), 0 4px 12px rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+.hero-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--green), var(--green-light));
+}
+.stat-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+}
+.stat { padding: 1.2rem; background: var(--cream); border-radius: 1rem; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--green-mid);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  margin-top: 0.3rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.hero-card-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 1.5rem;
+}
+.floating-badge {
+  position: absolute;
+  bottom: -1rem; right: -1rem;
+  background: var(--green);
+  color: var(--white);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  box-shadow: 0 8px 24px rgba(26,74,46,0.3);
+}
+
+/* ---- SECTION COMMONS ---- */
+section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+.section-desc {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  max-width: 540px;
+  margin-bottom: 3.5rem;
+}
+
+/* ---- SERVICES ---- */
+#services { background: none; }
+.services-header { max-width: 600px; }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.service-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  transition: box-shadow 0.25s, transform 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.service-card:hover {
+  box-shadow: 0 12px 40px rgba(26,74,46,0.1);
+  transform: translateY(-3px);
+}
+.service-icon {
+  width: 48px; height: 48px;
+  background: var(--green-pale);
+  border-radius: 0.75rem;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.25rem;
+  font-size: 1.4rem;
+}
+.service-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+.service-card p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--ink-mid);
+  font-weight: 300;
+}
+.service-accent {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--green), var(--green-light));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.service-card:hover .service-accent { transform: scaleX(1); }
+
+/* ---- DIVIDER ---- */
+.full-divider {
+  width: 100%; height: 1px;
+  background: var(--border);
+  margin: 0;
+}
+
+/* ---- WORK ---- */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+.work-card {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--white);
+  transition: box-shadow 0.25s, transform 0.2s;
+}
+.work-card:hover { box-shadow: 0 16px 48px rgba(26,74,46,0.1); transform: translateY(-3px); }
+.work-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+.work-img {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+}
+.work-card.featured .work-img { height: auto; min-height: 280px; }
+.work-img-bg {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem;
+}
+.work-body { padding: 1.8rem; }
+.work-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--green-pale);
+  color: var(--green-mid);
+  padding: 0.25rem 0.7rem;
+  border-radius: 1rem;
+}
+.work-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.work-body p { font-size: 0.88rem; line-height: 1.7; color: var(--ink-mid); font-weight: 300; }
+.work-result {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--green-mid);
+}
+.work-result span { font-style: italic; font-weight: 300; color: var(--ink-muted); }
+
+/* ---- TESTIMONIALS ---- */
+#testimonials { background: var(--green); color: var(--white); max-width: 100%; border-radius: 0; padding: 6rem; }
+#testimonials .section-label { color: var(--green-pale); }
+#testimonials .section-title { color: var(--white); }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto;
+}
+.testimonial-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 1.25rem;
+  padding: 2rem;
+}
+.testimonial-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 1.5rem;
+}
+.testimonial-author { display: flex; align-items: center; gap: 0.9rem; }
+.author-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--green-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  font-family: 'Playfair Display', serif;
+}
+.author-name { font-size: 0.88rem; font-weight: 500; }
+.author-role { font-size: 0.78rem; color: rgba(255,255,255,0.55); }
+
+/* ---- PROCESS ---- */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 1.5rem; left: 3rem; right: 3rem; height: 1px;
+  background: linear-gradient(90deg, var(--green), var(--green-light), var(--green));
+  z-index: 0;
+}
+.step { position: relative; z-index: 1; }
+.step-num {
+  width: 3rem; height: 3rem;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 0 0 4px var(--cream), 0 0 0 5px var(--green-pale);
+}
+.step h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.step p { font-size: 0.85rem; line-height: 1.65; color: var(--ink-mid); font-weight: 300; }
+
+/* ---- CONTACT ---- */
+#contact { background: var(--cream); }
+.contact-inner {
+  background: var(--white);
+  border-radius: 2rem;
+  padding: 4rem;
+  border: 1px solid var(--border);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+}
+.contact-info .section-title { margin-bottom: 1rem; }
+.contact-detail { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.contact-icon { font-size: 1.1rem; }
+.contact-detail a { text-decoration: none; color: var(--ink-mid); font-size: 0.95rem; transition: color 0.2s; }
+.contact-detail a:hover { color: var(--green-mid); }
+.contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group label { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.03em; color: var(--ink-mid); }
+.form-group input, .form-group textarea, .form-group select {
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.8rem 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--ink);
+  transition: border-color 0.2s;
+  outline: none;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  border-color: var(--green-light);
+}
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-submit {
+  background: var(--green);
+  color: var(--white);
+  border: none;
+  padding: 0.95rem 2.5rem;
+  border-radius: 2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  width: fit-content;
+}
+.form-submit:hover { background: var(--green-mid); transform: translateY(-1px); }
+
+/* ---- FOOTER ---- */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 2rem 3rem;
+  font-size: 0.82rem;
+}
+footer a { color: var(--green-pale); text-decoration: none; }
+
+/* ---- ANIMATIONS ---- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+  .hero-visual { display: none; }
+  section { padding: 4rem 1.5rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .work-grid { grid-template-columns: 1fr; }
+  .work-card.featured { grid-template-columns: 1fr; }
+  #testimonials { padding: 4rem 1.5rem; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .process-steps::before { display: none; }
+  .contact-inner { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; gap: 2rem; }
+  .form-row { grid-template-columns: 1fr; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+
+  <nav>
+    <div class="nav-logo">Alex<span>.</span>Reid</div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#contact" class="nav-cta">Let's Talk</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-tag">✦ Available for projects</div>
+      <h1>Digital Marketing<br/>that <em>drives</em><br/>real growth.</h1>
+      <p class="hero-sub">I help ambitious brands scale their online presence through data-driven strategies, compelling content, and paid media that converts.</p>
+      <div class="hero-btns">
+        <a href="#work" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-secondary">Start a Project</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-label">Results at a glance</div>
+        <div class="stat-grid">
+          <div class="stat">
+            <div class="stat-num">3.8×</div>
+            <div class="stat-label">Average ROAS</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">$12M+</div>
+            <div class="stat-label">Revenue Generated</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">60+</div>
+            <div class="stat-label">Brands Scaled</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">7 yrs</div>
+            <div class="stat-label">Experience</div>
+          </div>
+        </div>
+        <div class="floating-badge">Strategy → Scale</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-divider"></div>
+
+  <!-- SERVICES -->
+
+  <section id="services">
+    <div class="services-header">
+      <div class="section-label reveal">What I Do</div>
+      <h2 class="section-title reveal">End-to-end marketing,<br/>built to perform.</h2>
+      <p class="section-desc reveal">From top-of-funnel awareness to bottom-of-funnel conversion — I design and execute full-stack marketing systems tailored to your goals.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">📈</div>
+        <h3>Paid Media & PPC</h3>
+        <p>Google Ads, Meta, LinkedIn, and TikTok campaigns engineered for maximum ROI. I manage budgets from $5k to $500k/month.</p>
+        <div class="service-accent"></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">✍️</div>
+        <h3>Content Strategy</h3>
+        <p>Editorial calendars, SEO-optimized articles, and social content that positions you as the authority in your niche.</p>
+        <div class="service-accent"></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🔍</div>
+        <h3>SEO & Growth</h3>
+        <p>Technical SEO audits, keyword research, and link acquisition strategies that compound over time.</p>
+        <div class="service-accent"></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📧</div>
+        <h3>Email Marketing</h3>
+        <p>Automated flows and broadcast campaigns that nurture leads and drive repeat revenue with precision segmentation.</p>
+        <div class="service-accent"></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📊</div>
+        <h3>Analytics & Reporting</h3>
+        <p>GA4 setup, custom dashboards, and attribution modelling so you always know what's working and why.</p>
+        <div class="service-accent"></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🚀</div>
+        <h3>Launch Campaigns</h3>
+        <p>Full go-to-market strategy for product launches — from pre-launch buzz to post-launch optimisation.</p>
+        <div class="service-accent"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="full-divider"></div>
+
+  <!-- WORK -->
+
+  <section id="work">
+    <div class="section-label reveal">Selected Work</div>
+    <h2 class="section-title reveal">Campaigns that moved the needle.</h2>
+    <p class="section-desc reveal">A selection of recent client projects across industries and channels.</p>
+    <div class="work-grid">
+      <div class="work-card featured reveal">
+        <div class="work-img" style="background: linear-gradient(135deg, #1a4a2e 0%, #2d6e47 100%);">
+          <div class="work-img-bg">🛍️</div>
+        </div>
+        <div class="work-body">
+          <div class="work-tags"><span class="tag">Paid Social</span><span class="tag">Email</span><span class="tag">E-Commerce</span></div>
+          <h3>Sustainable Fashion Brand — Full-Funnel Relaunch</h3>
+          <p>Rebuilt their entire paid and owned media engine from scratch. Implemented a top-to-bottom Meta funnel with dynamic product ads, a 7-step welcome email sequence, and an influencer gifting programme.</p>
+          <div class="work-result">+340% revenue in 6 months <span>/ from $80k to $350k MRR</span></div>
+        </div>
+      </div>
+      <div class="work-card reveal">
+        <div class="work-img" style="background: linear-gradient(135deg, #2d6e47 0%, #4a9e68 100%);">
+          <div class="work-img-bg">💻</div>
+        </div>
+        <div class="work-body">
+          <div class="work-tags"><span class="tag">Google Ads</span><span class="tag">SEO</span><span class="tag">SaaS</span></div>
+          <h3>B2B SaaS — Organic & Paid Growth</h3>
+          <p>Led keyword strategy and content production, growing organic traffic 5x in 9 months while cutting cost-per-trial by 42% through Google Ads restructuring.</p>
+          <div class="work-result">5× organic traffic <span>/ CPL down 42%</span></div>
+        </div>
+      </div>
+      <div class="work-card reveal">
+        <div class="work-img" style="background: linear-gradient(135deg, #1a1a18 0%, #1a4a2e 100%);">
+          <div class="work-img-bg">🏥</div>
+        </div>
+        <div class="work-body">
+          <div class="work-tags"><span class="tag">Local SEO</span><span class="tag">Google Ads</span><span class="tag">Healthcare</span></div>
+          <h3>Healthcare Clinic — Local Lead Generation</h3>
+          <p>Multi-location local SEO and Google Ads strategy for a chain of physiotherapy clinics. Dominated local SERP and Google Maps rankings across 6 cities.</p>
+          <div class="work-result">+210% new patient bookings <span>/ 6 locations</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+
+  <section id="testimonials" style="max-width:100%; padding: 6rem;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="section-label reveal">Kind Words</div>
+      <h2 class="section-title reveal" style="color:white; margin-bottom: 2.5rem;">What clients say.</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-quote">"Alex transformed our paid social from a money pit into our best-performing channel. Measurable, efficient, and genuinely strategic."</div>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div><div class="author-name">Sarah T.</div><div class="author-role">CEO, Bloom & Co.</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-quote">"We'd tried three agencies before Alex. The difference was night and day — clear communication, real results, and no fluff in the reporting."</div>
+          <div class="testimonial-author">
+            <div class="author-avatar">M</div>
+            <div><div class="author-name">Marcus R.</div><div class="author-role">Founder, Treeline SaaS</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-quote">"Doubled our email revenue in four months. Alex knows exactly which levers to pull and isn't afraid to challenge conventional wisdom."</div>
+          <div class="testimonial-author">
+            <div class="author-avatar">J</div>
+            <div><div class="author-name">Jamie K.</div><div class="author-role">CMO, Vesper Goods</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+
+  <section id="process">
+    <div class="section-label reveal">How I Work</div>
+    <h2 class="section-title reveal">A clear process,<br/>every time.</h2>
+    <p class="section-desc reveal">No black boxes. You know exactly what's happening, when, and why — from kickoff to reporting.</p>
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h4>Discovery</h4>
+        <p>Deep-dive into your brand, market, competitors, and goals. No templates — every engagement starts with genuine understanding.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h4>Strategy</h4>
+        <p>A custom marketing blueprint with channel mix, messaging hierarchy, and 90-day execution plan tailored to your budget.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h4>Execute</h4>
+        <p>Launch, test, and iterate rapidly. I build in feedback loops from day one so we're always optimising toward what matters.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <h4>Scale</h4>
+        <p>Once we've found what works, we pour fuel on the fire. Systematic scaling with clear guardrails and regular reporting.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="full-divider"></div>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Let's build<br/>something great.</h2>
+        <p style="font-size:0.95rem; line-height:1.75; color: var(--ink-mid); font-weight:300; margin-bottom:2rem;">Ready to grow? Tell me about your project and I'll get back to you within one business day.</p>
+        <div class="contact-detail">
+          <span class="contact-icon">✉️</span>
+          <a href="mailto:alex@alexreid.co">alex@alexreid.co</a>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-icon">💼</span>
+          <a href="#">linkedin.com/in/alexreid</a>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-icon">📍</span>
+          <a href="#">London, UK — Remote worldwide</a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Jane" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="jane@company.com" />
+        </div>
+        <div class="form-group">
+          <label>What are you looking for?</label>
+          <select>
+            <option value="">Select a service…</option>
+            <option>Paid Media / PPC</option>
+            <option>SEO & Content</option>
+            <option>Email Marketing</option>
+            <option>Full-Funnel Strategy</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell me about your project</label>
+          <textarea placeholder="Share some context — budget, goals, timeline…"></textarea>
+        </div>
+        <button class="form-submit">Send Message →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <p>© 2026 Alex Reid · Digital Marketing · <a href="mailto:alex@alexreid.co">alex@alexreid.co</a></p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Smooth contact form
+    document.querySelector('.form-submit').addEventListener('click', function() {
+      this.textContent = '✓ Sent!';
+      this.style.background = 'var(--green-light)';
+      setTimeout(() => { this.textContent = 'Send Message →'; this.style.background = ''; }, 3000);
+    });
+  </script>
+
+</body>
+</html>
