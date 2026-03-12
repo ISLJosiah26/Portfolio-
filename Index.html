@@ -6,22 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Josiah Yule — Digital Marketing</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 ```
 :root {
-  --green: #1a4a2e;
-  --green-mid: #2d6e47;
-  --green-light: #4a9e68;
-  --green-pale: #d6ede0;
-  --cream: #f7f4ef;
-  --ink: #1a1a18;
-  --ink-mid: #3d3d38;
-  --ink-muted: #888882;
-  --border: #e0dbd2;
-  --white: #ffffff;
+  --green:       #a8d5b5;
+  --green-dark:  #5a9e72;
+  --green-deep:  #2e6647;
+  --green-pale:  #e8f5ee;
+  --green-mid:   #c8e8d4;
+  --ink:         #1c1c1a;
+  --ink-mid:     #4a4a46;
+  --ink-muted:   #9a9a94;
+  --cream:       #faf9f6;
+  --white:       #ffffff;
+  --border:      #e2dfd8;
 }
 
 html { scroll-behavior: smooth; }
@@ -37,395 +38,276 @@ body {
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 1.25rem 3rem;
-  background: rgba(247, 244, 239, 0.9);
-  backdrop-filter: blur(14px);
+  padding: 1.4rem 4rem;
+  background: rgba(250, 249, 246, 0.92);
+  backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
 }
 .nav-logo {
   font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
   color: var(--ink);
+  letter-spacing: 0.01em;
 }
-.nav-logo span { color: var(--green-mid); font-style: italic; }
-.nav-links { display: flex; gap: 2.5rem; align-items: center; }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
 .nav-links a {
   text-decoration: none;
-  font-size: 0.83rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   color: var(--ink-mid);
   transition: color 0.2s;
 }
-.nav-links a:hover { color: var(--green-mid); }
+.nav-links a:hover { color: var(--green-deep); }
 .nav-cta {
   background: var(--green) !important;
-  color: var(--white) !important;
-  padding: 0.55rem 1.4rem;
+  color: var(--ink) !important;
+  padding: 0.5rem 1.3rem;
   border-radius: 2rem;
+  font-weight: 500 !important;
 }
-.nav-cta:hover { background: var(--green-mid) !important; }
+.nav-cta:hover { background: var(--green-dark) !important; color: var(--white) !important; }
 
 /* HERO */
 .hero {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  padding: 8rem 3rem 4rem;
-  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10rem 4rem 6rem;
+  max-width: 900px;
   margin: 0 auto;
-  gap: 5rem;
 }
-.hero-text { animation: fadeUp 0.85s ease both; }
-.hero-tag {
-  display: inline-block;
-  font-size: 0.73rem;
+.hero-eyebrow {
+  font-size: 0.78rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--green-mid);
-  border: 1px solid var(--green-light);
-  padding: 0.35rem 0.9rem;
-  border-radius: 2rem;
-  margin-bottom: 2rem;
+  color: var(--green-deep);
+  margin-bottom: 1.75rem;
+  animation: fadeUp 0.7s ease both;
 }
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+  font-size: clamp(3rem, 6vw, 5.5rem);
   font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.01em;
-  margin-bottom: 1.6rem;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.7s 0.1s ease both;
 }
-.hero h1 em { font-style: italic; color: var(--green-mid); }
-.hero-sub {
-  font-size: 1.05rem;
-  font-weight: 300;
-  line-height: 1.8;
-  color: var(--ink-mid);
-  max-width: 460px;
-  margin-bottom: 2.5rem;
-}
-.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn-primary {
-  background: var(--green);
-  color: var(--white);
-  padding: 0.85rem 2rem;
-  border-radius: 2rem;
-  text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 500;
-  transition: background 0.2s, transform 0.15s;
-}
-.btn-primary:hover { background: var(--green-mid); transform: translateY(-1px); }
-.btn-secondary {
-  border: 1.5px solid var(--green-mid);
-  color: var(--green-mid);
-  padding: 0.85rem 2rem;
-  border-radius: 2rem;
-  text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 500;
-  transition: all 0.2s;
-}
-.btn-secondary:hover { background: var(--green-pale); }
-
-.hero-visual { animation: fadeUp 0.85s 0.18s ease both; }
-.hero-card {
-  background: var(--white);
-  border-radius: 1.5rem;
-  padding: 2.5rem;
-  box-shadow: 0 24px 64px rgba(26,74,46,0.1), 0 4px 12px rgba(0,0,0,0.05);
-  position: relative;
-  overflow: hidden;
-}
-.hero-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--green), var(--green-light));
-}
-.hero-card-label {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  margin-bottom: 1.5rem;
-}
-.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-.stat { padding: 1.2rem; background: var(--cream); border-radius: 0.9rem; }
-.stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.1rem;
-  font-weight: 700;
-  color: var(--green-mid);
-  line-height: 1;
-}
-.stat-label { font-size: 0.76rem; color: var(--ink-muted); margin-top: 0.35rem; font-weight: 400; }
-.hero-card-note {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 0.9rem;
-  color: var(--ink-muted);
-  line-height: 1.6;
-}
-.hero-card-note strong { color: var(--green-mid); font-style: normal; font-weight: 600; }
-
-/* DIVIDER */
-.full-divider { width: 100%; height: 1px; background: var(--border); }
-
-/* ABOUT STRIP */
-.about-strip {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4.5rem 3rem;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 5rem;
-  align-items: start;
-}
-.about-strip h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.7rem;
-  font-weight: 600;
-  line-height: 1.3;
-}
-.about-strip h2 em { font-style: italic; color: var(--green-mid); }
-.about-text { font-size: 0.95rem; line-height: 1.9; color: var(--ink-mid); font-weight: 300; }
-.about-text p + p { margin-top: 1rem; }
-
-/* SECTION COMMONS */
-section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
-.section-label {
-  font-size: 0.73rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--green-mid);
-  margin-bottom: 1rem;
-}
-.section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1.2rem;
-}
-.section-desc {
-  font-size: 0.97rem;
+.hero h1 em { font-style: italic; color: var(--green-deep); }
+.hero-bio {
+  font-size: 1.1rem;
   font-weight: 300;
   line-height: 1.85;
   color: var(--ink-mid);
-  max-width: 540px;
-  margin-bottom: 3.5rem;
+  max-width: 580px;
+  margin-bottom: 3rem;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+.hero-actions {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+.btn {
+  text-decoration: none;
+  padding: 0.85rem 2rem;
+  border-radius: 2rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: inline-block;
+}
+.btn-filled { background: var(--green); color: var(--ink); }
+.btn-filled:hover { background: var(--green-dark); color: var(--white); }
+.btn-outline { border: 1.5px solid var(--border); color: var(--ink-mid); }
+.btn-outline:hover { border-color: var(--green-dark); color: var(--green-deep); }
+
+/* SECTION */
+.section {
+  padding: 7rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-header { margin-bottom: 3.5rem; }
+.section-num {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+.section-title em { font-style: italic; color: var(--green-deep); }
+
+/* DIVIDER */
+.divider {
+  width: calc(100% - 8rem);
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 1px;
+  background: var(--border);
 }
 
 /* SERVICES */
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.service-card {
-  background: var(--white);
-  border: 1px solid var(--border);
+#services { background: var(--green-pale); max-width: 100%; padding: 7rem 4rem; }
+.services-inner { max-width: 1100px; margin: 0 auto; }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5px;
+  background: var(--green-mid);
+  border: 1.5px solid var(--green-mid);
   border-radius: 1.25rem;
-  padding: 2rem;
-  transition: box-shadow 0.25s, transform 0.25s;
-  position: relative;
   overflow: hidden;
 }
-.service-card:hover { box-shadow: 0 12px 40px rgba(26,74,46,0.1); transform: translateY(-3px); }
-.service-abbr {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--green-mid);
-  background: var(--green-pale);
-  padding: 0.3rem 0.65rem;
-  border-radius: 0.4rem;
-  display: inline-block;
-  margin-bottom: 1.25rem;
+.service-item {
+  background: var(--white);
+  padding: 2.25rem 2.5rem;
+  transition: background 0.2s;
 }
-.service-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.15rem;
+.service-item:hover { background: var(--green-pale); }
+.service-label {
+  font-size: 0.7rem;
   font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green-deep);
   margin-bottom: 0.75rem;
 }
-.service-card p { font-size: 0.87rem; line-height: 1.75; color: var(--ink-mid); font-weight: 300; }
-.service-accent {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--green), var(--green-light));
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.3s;
+.service-item h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.65rem;
+  line-height: 1.2;
 }
-.service-card:hover .service-accent { transform: scaleX(1); }
+.service-item p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  font-weight: 300;
+}
 
 /* WORK */
-.work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-.work-card {
+.work-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+.work-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  border: 1px solid var(--border);
   border-radius: 1.25rem;
   overflow: hidden;
-  border: 1px solid var(--border);
   background: var(--white);
   transition: box-shadow 0.25s, transform 0.2s;
 }
-.work-card:hover { box-shadow: 0 16px 48px rgba(26,74,46,0.1); transform: translateY(-3px); }
-.work-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
-.work-img {
-  height: 220px;
+.work-item:hover { box-shadow: 0 8px 32px rgba(90,158,114,0.12); transform: translateY(-2px); }
+.work-color {
+  min-height: 180px;
   display: flex; align-items: flex-end;
   padding: 1.75rem;
 }
-.work-card.featured .work-img { height: auto; min-height: 280px; }
-.work-img-label {
+.work-color-label {
   font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
-  font-weight: 700;
   font-style: italic;
-  color: rgba(255,255,255,0.15);
-  line-height: 1;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.2);
 }
-.work-body { padding: 1.8rem; }
-.work-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.work-content { padding: 2rem 2.25rem; display: flex; flex-direction: column; justify-content: center; }
+.work-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
 .tag {
-  font-size: 0.71rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
-  background: var(--green-pale); color: var(--green-mid);
-  padding: 0.25rem 0.7rem; border-radius: 1rem;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+  background: var(--green-pale); color: var(--green-deep);
+  padding: 0.22rem 0.65rem; border-radius: 1rem;
 }
-.work-body h3 {
+.work-content h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.2rem; font-weight: 600; margin-bottom: 0.65rem;
+  font-size: 1.25rem; font-weight: 600; margin-bottom: 0.6rem;
 }
-.work-body p { font-size: 0.87rem; line-height: 1.75; color: var(--ink-mid); font-weight: 300; }
+.work-content p { font-size: 0.87rem; line-height: 1.75; color: var(--ink-mid); font-weight: 300; }
 .work-result {
-  margin-top: 1.1rem; padding-top: 1.1rem; border-top: 1px solid var(--border);
-  font-size: 0.85rem; font-weight: 600; color: var(--green-mid);
+  margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);
+  font-size: 0.85rem; font-weight: 600; color: var(--green-deep);
 }
 .work-result span { font-style: italic; font-weight: 300; color: var(--ink-muted); margin-left: 0.2rem; }
 
-/* TESTIMONIALS */
-.testimonials-section { background: var(--green); padding: 6rem 3rem; }
-.testimonials-inner { max-width: 1200px; margin: 0 auto; }
-.testimonials-section .section-label { color: var(--green-pale); }
-.testimonials-section .section-title { color: var(--white); margin-bottom: 2.5rem; }
-.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.testimonial-card {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 1.25rem; padding: 2rem;
-}
-.testimonial-quote {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.97rem; font-style: italic; line-height: 1.8;
-  color: rgba(255,255,255,0.88); margin-bottom: 1.5rem;
-}
-.testimonial-author { display: flex; align-items: center; gap: 0.9rem; }
-.author-avatar {
-  width: 38px; height: 38px; border-radius: 50%;
-  background: rgba(255,255,255,0.14);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--white);
-}
-.author-name { font-size: 0.87rem; font-weight: 500; color: var(--white); }
-.author-role { font-size: 0.76rem; color: rgba(255,255,255,0.5); margin-top: 0.1rem; }
-
-/* PROCESS */
-.process-steps {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; position: relative;
-}
-.process-steps::before {
-  content: '';
-  position: absolute;
-  top: 1.4rem; left: 3.5rem; right: 3.5rem; height: 1px;
-  background: linear-gradient(90deg, var(--green-pale), var(--green-light), var(--green-pale));
-}
-.step { position: relative; z-index: 1; }
-.step-num {
-  width: 2.8rem; height: 2.8rem; border-radius: 50%;
-  background: var(--green); color: var(--white);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
-  margin-bottom: 1.25rem;
-  box-shadow: 0 0 0 4px var(--cream), 0 0 0 5px var(--green-pale);
-}
-.step h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
-.step p { font-size: 0.84rem; line-height: 1.7; color: var(--ink-mid); font-weight: 300; }
-
 /* CONTACT */
+#contact { background: var(--green-pale); max-width: 100%; padding: 7rem 4rem; }
 .contact-inner {
-  background: var(--white); border-radius: 2rem; padding: 4rem;
-  border: 1px solid var(--border);
-  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
 }
-.contact-label-row {
-  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
-  color: var(--green-mid); margin-bottom: 0.35rem;
+.contact-desc {
+  font-size: 0.97rem; line-height: 1.9; color: var(--ink-mid); font-weight: 300; margin-bottom: 2.5rem;
 }
-.contact-detail { margin-bottom: 1.25rem; }
-.contact-detail a {
-  text-decoration: none; color: var(--ink-mid); font-size: 0.93rem; transition: color 0.2s;
+.contact-links { display: flex; flex-direction: column; gap: 1rem; }
+.contact-link-row { display: flex; flex-direction: column; }
+.contact-link-label {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--green-deep); margin-bottom: 0.2rem;
 }
-.contact-detail a:hover { color: var(--green-mid); }
-.contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.contact-link-row a {
+  text-decoration: none; color: var(--ink-mid); font-size: 0.92rem; transition: color 0.2s;
+}
+.contact-link-row a:hover { color: var(--green-deep); }
+
+.contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-.form-group label { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.03em; color: var(--ink-mid); }
+.form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+.form-group label { font-size: 0.77rem; font-weight: 500; color: var(--ink-mid); letter-spacing: 0.02em; }
 .form-group input, .form-group textarea, .form-group select {
-  background: var(--cream); border: 1.5px solid var(--border);
-  border-radius: 0.75rem; padding: 0.8rem 1rem;
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: 0.7rem; padding: 0.78rem 1rem;
   font-family: 'DM Sans', sans-serif; font-size: 0.88rem; color: var(--ink);
-  transition: border-color 0.2s; outline: none;
+  outline: none; transition: border-color 0.2s;
 }
 .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-  border-color: var(--green-light);
+  border-color: var(--green-dark);
 }
-.form-group textarea { resize: vertical; min-height: 110px; }
+.form-group textarea { resize: vertical; min-height: 100px; }
 .form-submit {
-  background: var(--green); color: var(--white); border: none;
-  padding: 0.9rem 2.2rem; border-radius: 2rem;
+  background: var(--green); color: var(--ink); border: none;
+  padding: 0.88rem 2rem; border-radius: 2rem;
   font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 500;
-  cursor: pointer; transition: background 0.2s, transform 0.15s;
-  width: fit-content; letter-spacing: 0.02em;
+  cursor: pointer; width: fit-content; transition: all 0.2s;
 }
-.form-submit:hover { background: var(--green-mid); transform: translateY(-1px); }
+.form-submit:hover { background: var(--green-dark); color: var(--white); }
 
 /* FOOTER */
 footer {
-  background: var(--ink); color: rgba(255,255,255,0.45);
-  text-align: center; padding: 2rem 3rem; font-size: 0.8rem;
+  text-align: center; padding: 2rem;
+  font-size: 0.78rem; color: var(--ink-muted);
+  border-top: 1px solid var(--border);
 }
-footer a { color: rgba(214,237,224,0.65); text-decoration: none; }
 
 /* ANIMATIONS */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(22px); }
+  from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* RESPONSIVE */
-@media (max-width: 900px) {
-  nav { padding: 1rem 1.5rem; }
-  .nav-links { display: none; }
-  .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 2.5rem; }
-  .hero-visual { display: none; }
-  .about-strip { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 1.5rem; }
-  section { padding: 4rem 1.5rem; }
+@media (max-width: 800px) {
+  nav { padding: 1.1rem 1.5rem; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero { padding: 8rem 1.5rem 4rem; }
+  .section { padding: 5rem 1.5rem; }
+  .divider { width: calc(100% - 3rem); }
+  #services, #contact { padding: 5rem 1.5rem; }
   .services-grid { grid-template-columns: 1fr; }
-  .work-grid { grid-template-columns: 1fr; }
-  .work-card.featured { grid-template-columns: 1fr; }
-  .testimonials-section { padding: 4rem 1.5rem; }
-  .testimonials-grid { grid-template-columns: 1fr; }
-  .process-steps { grid-template-columns: 1fr 1fr; }
-  .process-steps::before { display: none; }
-  .contact-inner { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; gap: 2rem; }
+  .work-item { grid-template-columns: 1fr; }
+  .work-color { min-height: 120px; }
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
   .form-row { grid-template-columns: 1fr; }
 }
 ```
@@ -435,257 +317,139 @@ footer a { color: rgba(214,237,224,0.65); text-decoration: none; }
 <body>
 
   <nav>
-    <div class="nav-logo">Josiah <span>Yule</span></div>
+    <div class="nav-logo">Josiah Yule</div>
     <div class="nav-links">
       <a href="#services">Services</a>
       <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a href="#contact" class="nav-cta">Let's Talk</a>
+      <a href="#contact" class="nav-cta">Get In Touch</a>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- INTRO -->
 
   <div class="hero">
-    <div class="hero-text">
-      <div class="hero-tag">Available for new projects</div>
-      <h1>I help brands grow<br/>through marketing<br/>that <em>actually works.</em></h1>
-      <p class="hero-sub">I'm Josiah — a freelance digital marketer with seven years of experience turning underperforming channels into reliable growth engines. No fluff, no vanity metrics, no middlemen.</p>
-      <div class="hero-btns">
-        <a href="#work" class="btn-primary">See My Work</a>
-        <a href="#contact" class="btn-secondary">Get In Touch</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-card">
-        <div class="hero-card-label">Results at a glance</div>
-        <div class="stat-grid">
-          <div class="stat">
-            <div class="stat-num">3.8×</div>
-            <div class="stat-label">Average ROAS delivered</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">$12M+</div>
-            <div class="stat-label">Revenue generated</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">60+</div>
-            <div class="stat-label">Brands worked with</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">7 yrs</div>
-            <div class="stat-label">In the industry</div>
-          </div>
-        </div>
-        <div class="hero-card-note">
-          "I care about <strong>actual outcomes</strong> — not dashboards that look impressive in screenshots."
-        </div>
-      </div>
+    <div class="hero-eyebrow">Freelance Digital Marketer</div>
+    <h1>Marketing that<br/>drives <em>real</em> growth.</h1>
+    <p class="hero-bio">I'm Josiah — I help ambitious brands grow through paid media, content, and strategy that's built around outcomes, not activity. Seven years in, and I still care about the work.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-filled">See My Work</a>
+      <a href="#contact" class="btn btn-outline">Let's Talk</a>
     </div>
   </div>
 
-  <div class="full-divider"></div>
-
-  <!-- ABOUT -->
-
-  <div class="about-strip">
-    <h2>A little about <em>how I work.</em></h2>
-    <div class="about-text">
-      <p>I got into marketing because I was genuinely curious about what makes people pay attention — and what makes them pay money. That curiosity hasn't left. I spend a lot of time thinking about why campaigns succeed or fail, and I bring that thinking to every client engagement.</p>
-      <p>I work with a small number of clients at a time so I can go deep. You'll work with me directly — not get handed off to a junior after the sales call. I'm honest when something isn't working, proactive when I see an opportunity, and I write reports that are worth reading rather than ones designed to look impressive.</p>
-    </div>
-  </div>
-
-  <div class="full-divider"></div>
+  <div class="divider"></div>
 
   <!-- SERVICES -->
 
   <section id="services">
-    <div class="section-label reveal">What I Do</div>
-    <h2 class="section-title reveal">End-to-end marketing,<br/>built to perform.</h2>
-    <p class="section-desc reveal">From top-of-funnel awareness to bottom-of-funnel conversion — I design and execute full-stack marketing systems tailored to your goals and your budget.</p>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-abbr">PPC</div>
-        <h3>Paid Media</h3>
-        <p>Google, Meta, LinkedIn, and TikTok campaigns engineered for measurable ROI. I've managed budgets from $5k to $500k per month and I'm fluent in all the major platforms.</p>
-        <div class="service-accent"></div>
+    <div class="services-inner">
+      <div class="section-header reveal">
+        <div class="section-num">01 — Services</div>
+        <h2 class="section-title">What I can do<br/>for your business.</h2>
       </div>
-      <div class="service-card reveal">
-        <div class="service-abbr">Content</div>
-        <h3>Content Strategy</h3>
-        <p>Editorial calendars, SEO-led articles, and social content that earns authority in your niche — written for humans first, optimised for search second.</p>
-        <div class="service-accent"></div>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-abbr">SEO</div>
-        <h3>Search & Growth</h3>
-        <p>Technical SEO audits, keyword research, and link building strategies that compound over time. I focus on fundamentals that move rankings, not tricks that disappear.</p>
-        <div class="service-accent"></div>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-abbr">Email</div>
-        <h3>Email Marketing</h3>
-        <p>Automated flows and broadcast campaigns that turn subscribers into customers. I build sequences that feel personal at scale — because good ones do.</p>
-        <div class="service-accent"></div>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-abbr">Data</div>
-        <h3>Analytics & Reporting</h3>
-        <p>GA4 setup, attribution modelling, and custom dashboards that tell the truth. I help you understand what's working and stop spending money on what isn't.</p>
-        <div class="service-accent"></div>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-abbr">GTM</div>
-        <h3>Launch Strategy</h3>
-        <p>Full go-to-market planning for product launches — from building pre-launch anticipation to post-launch iteration. I've done this for bootstrapped founders and funded teams alike.</p>
-        <div class="service-accent"></div>
+      <div class="services-grid">
+        <div class="service-item reveal">
+          <div class="service-label">PPC</div>
+          <h3>Paid Media</h3>
+          <p>Google, Meta, LinkedIn, and TikTok campaigns built for measurable ROI. I've managed budgets from $5k to $500k a month.</p>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-label">SEO</div>
+          <h3>Search & Content</h3>
+          <p>Keyword strategy, technical audits, and SEO-led content that earns authority in your niche and compounds over time.</p>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-label">Email</div>
+          <h3>Email Marketing</h3>
+          <p>Automated flows and campaigns that turn subscribers into customers — built to feel personal at scale.</p>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-label">Strategy</div>
+          <h3>Full-Funnel Strategy</h3>
+          <p>A cohesive marketing plan connecting your channels, audience, and goals — with a 90-day roadmap to get there.</p>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-label">Data</div>
+          <h3>Analytics & Reporting</h3>
+          <p>GA4 setup, attribution modelling, and dashboards that show you what's actually working and what's costing you money.</p>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-label">GTM</div>
+          <h3>Launch Campaigns</h3>
+          <p>Go-to-market strategy for product launches — from pre-launch buzz through to post-launch optimisation.</p>
+        </div>
       </div>
     </div>
   </section>
-
-  <div class="full-divider"></div>
 
   <!-- WORK -->
 
-  <section id="work">
-    <div class="section-label reveal">Selected Work</div>
-    <h2 class="section-title reveal">A few things I'm<br/>genuinely proud of.</h2>
-    <p class="section-desc reveal">Every project here started with a real problem. The numbers below are accurate — I don't round up or remove context that makes results look more impressive than they were.</p>
+  <div class="section" id="work">
+    <div class="section-header reveal">
+      <div class="section-num">02 — Past Work</div>
+      <h2 class="section-title">A few things I'm<br/><em>genuinely proud of.</em></h2>
+    </div>
     <div class="work-grid">
-      <div class="work-card featured reveal">
-        <div class="work-img" style="background: linear-gradient(135deg, #1a4a2e 0%, #2d6e47 100%);">
-          <div class="work-img-label">Fashion</div>
+      <div class="work-item reveal">
+        <div class="work-color" style="background: linear-gradient(160deg, #a8d5b5 0%, #5a9e72 100%);">
+          <div class="work-color-label">Fashion</div>
         </div>
-        <div class="work-body">
+        <div class="work-content">
           <div class="work-tags"><span class="tag">Paid Social</span><span class="tag">Email</span><span class="tag">E-Commerce</span></div>
           <h3>Sustainable Fashion Brand — Full-Funnel Relaunch</h3>
-          <p>Rebuilt their entire paid and owned media engine from scratch. Designed a top-to-bottom Meta funnel with dynamic product ads, a 7-step welcome email sequence, and an influencer gifting programme that didn't feel like influencer marketing. The brand had good bones — it just needed a coherent strategy connecting all the pieces.</p>
+          <p>Rebuilt their paid and owned media from scratch — Meta funnel, dynamic product ads, a 7-step email welcome sequence, and an influencer programme that didn't feel like one.</p>
           <div class="work-result">+340% revenue in 6 months <span>— $80k to $350k MRR</span></div>
         </div>
       </div>
-      <div class="work-card reveal">
-        <div class="work-img" style="background: linear-gradient(135deg, #2d6e47 0%, #4a9e68 100%);">
-          <div class="work-img-label">SaaS</div>
+      <div class="work-item reveal">
+        <div class="work-color" style="background: linear-gradient(160deg, #c8e8d4 0%, #a8d5b5 100%);">
+          <div class="work-color-label">SaaS</div>
         </div>
-        <div class="work-body">
+        <div class="work-content">
           <div class="work-tags"><span class="tag">Google Ads</span><span class="tag">SEO</span><span class="tag">B2B SaaS</span></div>
           <h3>B2B SaaS — Organic & Paid Growth</h3>
-          <p>Led keyword strategy and content production, growing organic traffic 5x in 9 months. Simultaneously restructured their Google Ads account, cutting cost-per-trial by 42% without touching the monthly budget.</p>
+          <p>Led keyword strategy and content production to grow organic traffic 5x in 9 months. Restructured their Google Ads account and cut cost-per-trial by 42% without touching the budget.</p>
           <div class="work-result">5× organic traffic <span>— CPL down 42%</span></div>
         </div>
       </div>
-      <div class="work-card reveal">
-        <div class="work-img" style="background: linear-gradient(135deg, #16372a 0%, #1a4a2e 100%);">
-          <div class="work-img-label">Health</div>
+      <div class="work-item reveal">
+        <div class="work-color" style="background: linear-gradient(160deg, #2e6647 0%, #5a9e72 100%);">
+          <div class="work-color-label">Health</div>
         </div>
-        <div class="work-body">
+        <div class="work-content">
           <div class="work-tags"><span class="tag">Local SEO</span><span class="tag">Google Ads</span><span class="tag">Healthcare</span></div>
           <h3>Physiotherapy Group — Local Lead Generation</h3>
-          <p>Multi-location local SEO and paid search strategy for a growing physiotherapy group. Dominated local SERP and Maps rankings across 6 cities within a year, driving a significant uplift in new patient bookings.</p>
-          <div class="work-result">+210% new patient bookings <span>— across 6 locations</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-
-  <div class="testimonials-section">
-    <div class="testimonials-inner">
-      <div class="section-label reveal">Kind Words</div>
-      <h2 class="section-title reveal">What clients say.</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card reveal">
-          <div class="testimonial-quote">"Josiah transformed our paid social from a money pit into our best-performing channel. What stood out was how quickly he grasped our brand — and how little hand-holding he needed."</div>
-          <div class="testimonial-author">
-            <div class="author-avatar">S</div>
-            <div>
-              <div class="author-name">Sarah T.</div>
-              <div class="author-role">CEO, Bloom & Co.</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card reveal">
-          <div class="testimonial-quote">"We'd tried three agencies before Josiah. The difference was night and day — he communicates like a human, reports on what actually matters, and doesn't hide behind jargon."</div>
-          <div class="testimonial-author">
-            <div class="author-avatar">M</div>
-            <div>
-              <div class="author-name">Marcus R.</div>
-              <div class="author-role">Founder, Treeline SaaS</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card reveal">
-          <div class="testimonial-quote">"Doubled our email revenue in four months. Josiah knows exactly which levers to pull — and he's not afraid to tell you when you're wrong. That's exactly what you want in someone running your marketing."</div>
-          <div class="testimonial-author">
-            <div class="author-avatar">J</div>
-            <div>
-              <div class="author-name">Jamie K.</div>
-              <div class="author-role">CMO, Vesper Goods</div>
-            </div>
-          </div>
+          <p>Multi-location local SEO and paid search for a growing physiotherapy chain. Dominated local search and Maps rankings across 6 cities within a year.</p>
+          <div class="work-result">+210% new patient bookings <span>— 6 locations</span></div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- PROCESS -->
-
-  <section id="process">
-    <div class="section-label reveal">How I Work</div>
-    <h2 class="section-title reveal">Transparent from<br/>the first conversation.</h2>
-    <p class="section-desc reveal">I've worked with clients who've been burned by agencies before. I keep things clear and direct — you always know what's happening, what it's costing, and why.</p>
-    <div class="process-steps">
-      <div class="step reveal">
-        <div class="step-num">1</div>
-        <h4>Discovery</h4>
-        <p>A proper deep-dive into your brand, audience, competitive landscape, and goals. I don't start with templates — I start with questions.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">2</div>
-        <h4>Strategy</h4>
-        <p>A bespoke marketing blueprint: channel mix, messaging hierarchy, and a 90-day execution plan sized to your budget and your team's bandwidth.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">3</div>
-        <h4>Execute</h4>
-        <p>Launch, test, and iterate quickly. Feedback loops are built in from day one so we're always optimising toward what actually matters.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">4</div>
-        <h4>Scale</h4>
-        <p>Once we know what works, we put more behind it — systematically, with clear guardrails and reporting that's worth reading.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="full-divider"></div>
 
   <!-- CONTACT -->
 
   <section id="contact">
     <div class="contact-inner">
-      <div class="contact-info">
-        <div class="section-label">Get In Touch</div>
-        <h2 class="section-title">I'd love to hear<br/>about your project.</h2>
-        <p style="font-size:0.93rem; line-height:1.85; color:var(--ink-mid); font-weight:300; margin-bottom:2.5rem;">
-          Drop me a message and I'll get back to you within one business day. No pitch decks, no sales calls — just a straightforward conversation about what you need and whether I can genuinely help.
-        </p>
-        <div class="contact-detail">
-          <div class="contact-label-row">Email</div>
-          <a href="mailto:josiah@josiahyule.co">josiah@josiahyule.co</a>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-label-row">LinkedIn</div>
-          <a href="#">linkedin.com/in/josiahyule</a>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-label-row">Location</div>
-          <a href="#">Remote — works with clients worldwide</a>
+      <div>
+        <div class="section-num reveal">03 — Contact</div>
+        <h2 class="section-title reveal" style="margin-bottom: 1.5rem;">Let's work<br/><em>together.</em></h2>
+        <p class="contact-desc reveal">Drop me a message and I'll get back to you within one business day. No pitch decks, no sales calls — just a direct conversation about what you need.</p>
+        <div class="contact-links reveal">
+          <div class="contact-link-row">
+            <span class="contact-link-label">Email</span>
+            <a href="mailto:josiah@josiahyule.co">josiah@josiahyule.co</a>
+          </div>
+          <div class="contact-link-row">
+            <span class="contact-link-label">LinkedIn</span>
+            <a href="#">linkedin.com/in/josiahyule</a>
+          </div>
+          <div class="contact-link-row">
+            <span class="contact-link-label">Location</span>
+            <a href="#">Remote — works with clients worldwide</a>
+          </div>
         </div>
       </div>
-      <div class="contact-form">
+      <div class="contact-form reveal">
         <div class="form-row">
           <div class="form-group">
             <label>First Name</label>
@@ -714,38 +478,38 @@ footer a { color: rgba(214,237,224,0.65); text-decoration: none; }
         </div>
         <div class="form-group">
           <label>Tell me about your project</label>
-          <textarea placeholder="Share some context — budget, goals, timeline, what's not working right now…"></textarea>
+          <textarea placeholder="Budget, goals, timeline — whatever's useful…"></textarea>
         </div>
         <button class="form-submit" id="submitBtn">Send Message</button>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-
   <footer>
-    <p>© 2026 Josiah Yule &nbsp;&middot;&nbsp; Digital Marketing &nbsp;&middot;&nbsp; <a href="mailto:josiah@josiahyule.co">josiah@josiahyule.co</a></p>
+    © 2026 Josiah Yule &nbsp;&middot;&nbsp; josiah@josiahyule.co
   </footer>
 
   <script>
     const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 55);
-          observer.unobserve(entry.target);
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+          obs.unobserve(e.target);
         }
       });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => observer.observe(el));
+    }, { threshold: 0.08 });
+    reveals.forEach(el => obs.observe(el));
 
     document.getElementById('submitBtn').addEventListener('click', function() {
       this.textContent = 'Sent — talk soon.';
-      this.style.background = 'var(--green-light)';
+      this.style.background = 'var(--green-dark)';
+      this.style.color = 'white';
       this.disabled = true;
       setTimeout(() => {
         this.textContent = 'Send Message';
         this.style.background = '';
+        this.style.color = '';
         this.disabled = false;
       }, 3500);
     });
