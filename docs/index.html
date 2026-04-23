@@ -279,6 +279,7 @@
       cursor: pointer; width: fit-content; transition: all 0.2s;
     }
     .form-submit:hover { background: var(--green-dark); color: var(--white); }
+    .form-submit:disabled { opacity: 0.7; cursor: not-allowed; }
 
     /* FOOTER */
     footer {
@@ -364,14 +365,14 @@
           <p>Building, launching, and managing websites from the ground up, clean, fast, and designed to convert. Comfortable across a range of platforms and custom builds.</p>
         </div>
         <div class="service-item reveal">
-          <div class="service-label">Brand</div>
-          <h3>Brand Design</h3>
-          <p>Visual identity work that gives your brand a consistent, professional look, including logos, colour palettes, templates, and brand guidelines.</p>
-        </div>
-        <div class="service-item reveal">
           <div class="service-label">Data</div>
           <h3>Analytics & Reporting</h3>
           <p>GA4 setup and regular reporting that makes sense of your data, so you always know what's working and where to focus your efforts.</p>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-label">Tools</div>
+          <h3>Custom Marketing Tools</h3>
+          <p>Purpose-built internal tools, dashboards, and automations that save time and surface insights your off-the-shelf software won't catch.</p>
         </div>
       </div>
     </div>
@@ -380,43 +381,66 @@
   <!-- WORK -->
   <div class="section" id="work">
     <div class="section-header reveal">
-      <div class="section-num">02 · Experience</div>
+      <div class="section-num">02 · Work</div>
       <h2 class="section-title">A few things I'm<br/><em>genuinely proud of.</em></h2>
     </div>
     <div class="work-grid">
+
+      <!-- Project 1: ISL/AS/ADS Websites -->
       <div class="work-item reveal">
         <div class="work-color" style="background: linear-gradient(160deg, #a8d5b5 0%, #5a9e72 100%);">
-          <div class="work-color-label">Social</div>
-        </div>
-        <div class="work-content">
-          <div class="work-tags"><span class="tag">Social Media</span><span class="tag">Content</span><span class="tag">Copywriting</span></div>
-          <h3>Paid Social & Content</h3>
-          <p>Managed organic and paid social across Instagram, Facebook, and LinkedIn. Planned content calendars, wrote copy, and tracked performance to improve engagement and reach over time.</p>
-          <div class="work-result">Consistent growth in reach and engagement <span>across multiple accounts</span></div>
-        </div>
-      </div>
-      <div class="work-item reveal">
-        <div class="work-color" style="background: linear-gradient(160deg, #c8e8d4 0%, #a8d5b5 100%);">
           <div class="work-color-label">Web</div>
         </div>
         <div class="work-content">
-          <div class="work-tags"><span class="tag">Web Development</span><span class="tag">Design</span><span class="tag">Launch</span></div>
-          <h3>Website Creation & Management</h3>
-          <p>Built, launched, and maintained websites for brands, handling everything from initial design and development through to ongoing updates, performance monitoring, and content management.</p>
-          <div class="work-result">End-to-end ownership <span>from brief to live site</span></div>
+          <div class="work-tags">
+            <span class="tag">Web Development</span>
+            <span class="tag">Squarespace</span>
+            <span class="tag">HTML/CSS/JS</span>
+            <span class="tag">Multi-Brand</span>
+          </div>
+          <h3>Three Websites, Built From Scratch</h3>
+          <p>Designed and built three separate branded websites for a group of Atlantic Canadian recruitment agencies: Integrated Staffing, Accountant Staffing, and Administrative Staffing. Each site was built from the ground up on Squarespace with fully custom HTML, CSS, and JavaScript components, including live job boards pulling from external APIs, interactive location accordions, and branded content sections. All three launched under a single coordinated rollout.</p>
+          <div class="work-result">15% increase in website traffic <span>following launch across all three brands</span></div>
         </div>
       </div>
+
+      <!-- Project 2: ClientWatch -->
       <div class="work-item reveal">
         <div class="work-color" style="background: linear-gradient(160deg, #2e6647 0%, #5a9e72 100%);">
-          <div class="work-color-label">SEO</div>
+          <div class="work-color-label">Product</div>
         </div>
         <div class="work-content">
-          <div class="work-tags"><span class="tag">SEO</span><span class="tag">Google Ads</span><span class="tag">Analytics</span></div>
-          <h3>Search & Performance Marketing</h3>
-          <p>Conducted keyword research and contributed to SEO content strategies as part of in-house marketing teams. Supported Google Ads campaigns and used GA4 to report on traffic, conversions, and campaign performance.</p>
-          <div class="work-result">Improved search visibility <span>across competitive niches</span></div>
+          <div class="work-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Product Development</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Recruitment Tech</span>
+          </div>
+          <h3>ClientWatch</h3>
+          <p>Built an internal job intelligence platform that monitors external job boards in real time and alerts recruitment consultants when existing clients post roles publicly. The tool identifies a gap that traditional CRM systems miss entirely: clients quietly hiring through competitors. By surfacing these signals automatically, it turns passive client relationships into active placement opportunities before a competitor gets there first. Built independently using Python, with version control via GitHub.</p>
+          <div class="work-result">Proactive placement opportunities <span>surfaced automatically from passive client monitoring</span></div>
         </div>
       </div>
+
+      <!-- Project 3: KPI Dashboard -->
+      <div class="work-item reveal">
+        <div class="work-color" style="background: linear-gradient(160deg, #c8e8d4 0%, #4a8a62 100%);">
+          <div class="work-color-label">Data</div>
+        </div>
+        <div class="work-content">
+          <div class="work-tags">
+            <span class="tag">Analytics</span>
+            <span class="tag">GA4</span>
+            <span class="tag">Google Sheets</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Data Viz</span>
+          </div>
+          <h3>Live KPI Performance Dashboard</h3>
+          <p>Designed and built a real-time marketing performance dashboard for Integrated Staffing, pulling live data from Google Sheets via a custom Apps Script JSON endpoint. The dashboard tracks social media KPIs, website analytics, and quarter-over-quarter trends, with animated counters, Chart.js visualisations, automatic delta calculations, and CSV export. Built to replace fragmented manual reporting and give leadership a single source of truth on marketing performance.</p>
+          <div class="work-result">Replaced manual monthly reporting <span>with a live, self-updating performance view</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -430,7 +454,7 @@
         <div class="contact-links reveal">
           <div class="contact-link-row">
             <span class="contact-link-label">Email</span>
-            <a href="mailto:josiah@josiahyule.co">josiah@josiahyule.co</a>
+            <a href="mailto:josiahyule@hotmail.com">josiahyule@hotmail.com</a>
           </div>
           <div class="contact-link-row">
             <span class="contact-link-label">LinkedIn</span>
@@ -442,48 +466,57 @@
           </div>
         </div>
       </div>
-      <div class="contact-form reveal">
+
+      <!-- FORMSPREE FORM — replace YOUR_FORM_ID with your actual Formspree form ID -->
+      <form
+        class="contact-form reveal"
+        id="contactForm"
+        action="https://formspree.io/f/xeevvkey"
+        method="POST"
+      >
         <div class="form-row">
           <div class="form-group">
-            <label>First Name</label>
-            <input type="text" placeholder="Jane" />
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Jane" required />
           </div>
           <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" placeholder="Smith" />
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
           </div>
         </div>
         <div class="form-group">
-          <label>Email</label>
-          <input type="email" placeholder="jane@company.com" />
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="jane@company.com" required />
         </div>
         <div class="form-group">
-          <label>What are you looking for?</label>
-          <select>
+          <label for="service">What are you looking for?</label>
+          <select id="service" name="service">
             <option value="">Select a service…</option>
             <option>Paid Media / PPC</option>
             <option>SEO & Content</option>
             <option>Social Media</option>
             <option>Website Development</option>
-            <option>Brand Design</option>
             <option>Analytics & Reporting</option>
+            <option>Custom Marketing Tools</option>
             <option>Other / Not Sure Yet</option>
           </select>
         </div>
         <div class="form-group">
-          <label>Tell me about your project</label>
-          <textarea placeholder="Budget, goals, timeline, whatever's useful…"></textarea>
+          <label for="message">Tell me about your project</label>
+          <textarea id="message" name="message" placeholder="Budget, goals, timeline, whatever's useful…"></textarea>
         </div>
-        <button class="form-submit" id="submitBtn">Send Message</button>
-      </div>
+        <button type="submit" class="form-submit" id="submitBtn">Send Message</button>
+        <p id="formStatus" style="font-size: 0.83rem; color: var(--green-deep); display: none; margin-top: 0.5rem;"></p>
+      </form>
     </div>
   </section>
 
   <footer>
-    © 2026 Josiah Yule &nbsp;&middot;&nbsp; josiah@josiahyule.co
+    © 2026 Josiah Yule &nbsp;&middot;&nbsp; josiahyule@hotmail.com
   </footer>
 
   <script>
+    // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const obs = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
@@ -495,17 +528,42 @@
     }, { threshold: 0.08 });
     reveals.forEach(el => obs.observe(el));
 
-    document.getElementById('submitBtn').addEventListener('click', function() {
-      this.textContent = 'Sent! Talk soon.';
-      this.style.background = 'var(--green-dark)';
-      this.style.color = 'white';
-      this.disabled = true;
-      setTimeout(() => {
-        this.textContent = 'Send Message';
-        this.style.background = '';
-        this.style.color = '';
-        this.disabled = false;
-      }, 3500);
+    // Formspree AJAX submission
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formStatus = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+
+      const data = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          submitBtn.textContent = 'Sent! Talk soon.';
+          submitBtn.style.background = 'var(--green-dark)';
+          submitBtn.style.color = 'white';
+          form.reset();
+          formStatus.textContent = "Your message is on its way. I'll be in touch shortly.";
+          formStatus.style.display = 'block';
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (err) {
+        submitBtn.textContent = 'Send Message';
+        submitBtn.disabled = false;
+        formStatus.textContent = 'Something went wrong. Please email me directly at josiahyule@hotmail.com';
+        formStatus.style.color = '#c0392b';
+        formStatus.style.display = 'block';
+      }
     });
   </script>
 
