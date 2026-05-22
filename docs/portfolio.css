@@ -453,7 +453,6 @@ section, header {
 /* ===== WORK LIST ===== */
 .work-list {
   list-style: none;
-  border-top: 1px solid var(--border-soft);
 }
 .work-entry {
   display: grid;
@@ -499,7 +498,6 @@ section, header {
 /* ===== CONTACT ===== */
 #contact {
   background: var(--cream);
-  border-top: 1px solid var(--border-soft);
   max-width: 100%;
   padding-left: 0; padding-right: 0;
 }
