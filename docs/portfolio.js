@@ -104,6 +104,41 @@ const CASE_STUDIES = [
   },
 
   {
+    id: 'logodesign',
+    title: 'Logo design for an editing firm.',
+    year: '2025',
+    client: 'Confidential',
+    role: 'Brand Design',
+    deck: 'A logo and visual identity for a professional editing firm — built to feel precise, credible, and distinct in a crowded market.',
+    cover: { src: '', tag: 'logo-cover.jpg' },
+    sections: [
+      {
+        label: 'The brief',
+        body: [
+          "The client is a professional editing firm looking to establish a stronger brand presence. The existing identity was inconsistent and didn't reflect the quality and precision of their work.",
+          "The goal was a clean, distinctive mark that would work across digital and print — business cards, website, proposals, and email headers."
+        ]
+      },
+      {
+        label: 'The approach',
+        body: [
+          "Explored several directions before settling on a mark that balances editorial precision with a modern, professional feel. Typography and spacing were treated as the primary design elements.",
+          "Delivered final logo in multiple formats: primary lockup, stacked variant, and icon-only mark. Accompanied by a one-page brand guide covering colour palette, type, and usage rules."
+        ]
+      },
+      {
+        label: 'Outcome',
+        body: [
+          "A cohesive visual identity ready for immediate deployment across all brand touchpoints."
+        ]
+      }
+    ],
+    quote: null,
+    gallery: [],
+    links: []
+  },
+
+  {
     id: 'dashboard',
     title: 'Marketing performance dashboard.',
     year: '2024',
