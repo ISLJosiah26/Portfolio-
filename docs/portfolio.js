@@ -16,7 +16,7 @@ const CASE_STUDIES = [
     client: 'Integrated Staffing Group',
     role: 'Design & Development',
     deck: 'Three sister agencies in Atlantic Canada, each with a separate brand, built on a shared technical foundation from scratch on Squarespace.',
-    cover: { src: '', tag: 'staffing-cover.jpg' },
+    cover: { src: 'staffing-integrated.jpg', tag: 'staffing-cover.jpg' },
     sections: [
       {
         label: 'The brief',
@@ -47,7 +47,11 @@ const CASE_STUDIES = [
       }
     ],
     quote: null,
-    gallery: [],
+    gallery: [
+      { src: 'staffing-integrated.jpg', wide: true },
+      { src: 'staffing-administrative.jpg' },
+      { src: 'staffing-accountant.jpg' }
+    ],
     links: [
       { label: 'integratedstaffing.ca', href: 'https://integratedstaffing.ca', meta: 'live' },
       { label: 'accountantstaffing.ca', href: 'https://accountantstaffing.ca', meta: 'live' },
@@ -145,7 +149,7 @@ const CASE_STUDIES = [
     client: 'Integrated Staffing',
     role: 'Design & Development',
     deck: 'A live KPI dashboard that pulls data from Google Sheets through a custom Apps Script endpoint. Replaced a manual monthly reporting process.',
-    cover: { src: '', tag: 'dashboard-cover.jpg' },
+    cover: { src: 'dashboard-cover.jpg', tag: 'dashboard-cover.jpg' },
     sections: [
       {
         label: 'The problem',
