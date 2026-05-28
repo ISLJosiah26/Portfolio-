@@ -143,6 +143,43 @@ const CASE_STUDIES = [
   },
 
   {
+    id: 'wwhra',
+    title: 'Website for a residents association.',
+    year: '2025',
+    client: 'Westwood Hills Residents Association',
+    role: 'Design & Development',
+    deck: 'A full redesign of the digital presence for a volunteer-run community association in Upper Tantallon, NS — replacing an aging Joomla site with a clean, accessible, and easy-to-maintain web presence.',
+    cover: { src: '', tag: 'wwhra-cover.jpg' },
+    sections: [
+      {
+        label: 'The brief',
+        body: [
+          "The Westwood Hills Residents Association is a volunteer-run community organization serving a neighbourhood of approximately 5,000 residents in Upper Tantallon, Nova Scotia. Their site was built on Joomla and hadn't been meaningfully updated in years — difficult to navigate, not mobile-friendly, and hard for the volunteer board to maintain.",
+          "The goal was a clean, fast, accessible site that the association could manage themselves without technical help. It needed to surface key community information quickly: meeting minutes, health clinic schedules, emergency resources, and board contacts."
+        ]
+      },
+      {
+        label: 'The approach',
+        body: [
+          "Given the volunteer context, the right tool was a static site — fast to load, cheap to host, and with no CMS overhead to maintain. Content was restructured around what residents actually need: upcoming events, resident resources, and how to get involved.",
+          "The design is deliberately simple. Large type, high contrast, no unnecessary chrome. The navigation mirrors how residents think about the organization, not how the old site was organized. Every page is mobile-first."
+        ]
+      },
+      {
+        label: 'Outcome',
+        body: [
+          "A significantly faster and more accessible site that the volunteer board can update without developer involvement. Page load times reduced from multi-second Joomla renders to near-instant static delivery."
+        ]
+      }
+    ],
+    quote: null,
+    gallery: [],
+    links: [
+      { label: 'wwhra.com', href: 'https://www.wwhra.com', meta: 'live' }
+    ]
+  },
+
+  {
     id: 'dashboard',
     title: 'Marketing performance dashboard.',
     year: '2024',
