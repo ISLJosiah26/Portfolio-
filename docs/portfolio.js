@@ -11,8 +11,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
 const CASE_STUDIES = [
   {
     id: 'staffing',
-    title: 'Three recruitment websites.',
-    year: '2024',
+    title: 'Three websites for sister companies.',
+    year: '2026',
     client: 'Integrated Staffing Group',
     role: 'Design & Development',
     deck: 'Three sister agencies in Atlantic Canada, each with a separate brand, built on a shared technical foundation from scratch on Squarespace.',
@@ -60,9 +60,9 @@ const CASE_STUDIES = [
   },
 
   {
-    id: 'clientwatch',
-    title: 'ClientWatch.',
-    year: '2024',
+    id: 'intelligence',
+    title: 'Business Intelligence Program.',
+    year: '2026',
     client: 'Integrated Staffing Group',
     role: 'Product & Development',
     deck: 'A job intelligence platform running across three recruitment agencies. It monitors job boards across Atlantic Canada and alerts the right consultant when one of their clients posts a role.',
@@ -110,7 +110,7 @@ const CASE_STUDIES = [
   {
     id: 'logodesign',
     title: 'Logo design for an editing firm.',
-    year: '2025',
+    year: '2026',
     client: 'Confidential',
     role: 'Brand Design',
     deck: 'A logo and visual identity for a professional editing firm — built to feel precise, credible, and distinct in a crowded market.',
@@ -145,7 +145,7 @@ const CASE_STUDIES = [
   {
     id: 'wwhra',
     title: 'Website for a residents association.',
-    year: '2025',
+    year: '2026',
     client: 'Westwood Hills Residents Association',
     role: 'Design & Development',
     deck: 'A full redesign of the digital presence for a volunteer-run community association in Upper Tantallon, NS — replacing an aging Joomla site with a clean, accessible, and easy-to-maintain web presence.',
@@ -182,7 +182,7 @@ const CASE_STUDIES = [
   {
     id: 'dashboard',
     title: 'Marketing performance dashboard.',
-    year: '2024',
+    year: '2026',
     client: 'Integrated Staffing',
     role: 'Design & Development',
     deck: 'A live KPI dashboard that pulls data from Google Sheets through a custom Apps Script endpoint. Replaced a manual monthly reporting process.',
