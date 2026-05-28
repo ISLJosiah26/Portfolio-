@@ -322,7 +322,7 @@ section, header {
   font-size: 0.68rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ink-mid);
+  color: var(--ink);
   font-weight: 500;
 }
 .service-hero-grid {
@@ -344,16 +344,16 @@ section, header {
   font-size: 1.05rem;
   font-weight: 300;
   line-height: 1.6;
-  color: var(--ink-mid);
+  color: var(--ink);
   padding-left: 1.25rem;
-  border-left: 1px solid rgba(13, 13, 11, 0.18);
+  border-left: 1px solid rgba(13, 13, 11, 0.25);
   margin-bottom: 2rem;
   max-width: 38ch;
 }
 .service-hero-body {
   font-size: 0.95rem;
   line-height: 1.8;
-  color: var(--ink-mid);
+  color: var(--ink);
   font-weight: 300;
   margin-bottom: 2.5rem;
   max-width: 44ch;
@@ -380,7 +380,7 @@ section, header {
   font-size: 0.68rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ink-mid);
+  color: var(--ink);
   font-weight: 500;
   padding-bottom: 0.9rem;
   border-bottom: 1px solid rgba(13, 13, 11, 0.1);
@@ -410,7 +410,7 @@ section, header {
 .meta-text span {
   display: block;
   font-size: 0.83rem;
-  color: var(--ink-mid);
+  color: var(--ink);
   font-weight: 300;
   margin-top: 0.25rem;
   line-height: 1.5;
