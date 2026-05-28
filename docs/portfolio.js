@@ -16,7 +16,7 @@ const CASE_STUDIES = [
     client: 'Integrated Staffing Group',
     role: 'Design & Development',
     deck: 'Three sister agencies in Atlantic Canada, each with a separate brand, built on a shared technical foundation from scratch on Squarespace.',
-    cover: { src: 'staffing-integrated.jpg', tag: 'staffing-cover.jpg' },
+    cover: { src: 'staffing-integrated.jpg', alt: 'Integrated Staffing website homepage', tag: 'staffing-cover.jpg' },
     sections: [
       {
         label: 'The brief',
@@ -48,9 +48,9 @@ const CASE_STUDIES = [
     ],
     quote: null,
     gallery: [
-      { src: 'staffing-integrated.jpg', wide: true },
-      { src: 'staffing-administrative.jpg' },
-      { src: 'staffing-accountant.jpg' }
+      { src: 'staffing-integrated.jpg', alt: 'Integrated Staffing homepage', wide: true },
+      { src: 'staffing-administrative.jpg', alt: 'Administrative Staffing homepage' },
+      { src: 'staffing-accountant.jpg', alt: 'Accountant Staffing homepage' }
     ],
     links: [
       { label: 'integratedstaffing.ca', href: 'https://integratedstaffing.ca', meta: 'live' },
@@ -186,7 +186,7 @@ const CASE_STUDIES = [
     client: 'Integrated Staffing',
     role: 'Design & Development',
     deck: 'A live KPI dashboard that pulls data from Google Sheets through a custom Apps Script endpoint. Replaced a manual monthly reporting process.',
-    cover: { src: 'dashboard-cover.jpg', tag: 'dashboard-cover.jpg' },
+    cover: { src: 'dashboard-cover.jpg', alt: 'Marketing performance dashboard showing KPI charts', tag: 'dashboard-cover.jpg' },
     sections: [
       {
         label: 'The problem',
@@ -246,14 +246,14 @@ const drawerClose = document.getElementById('drawerClose');
 
 function imageOrPlaceholder(item, classExtra = '') {
   if (item.src) {
-    return `<div class="cs-gallery-item ${classExtra}"><img src="${item.src}" alt=""/></div>`;
+    return `<div class="cs-gallery-item ${classExtra}"><img src="${item.src}" alt="${item.alt || ''}"/></div>`;
   }
   return `<div class="cs-gallery-item placeholder ${classExtra}"><span class="placeholder-tag">${item.tag || 'image.jpg'}</span></div>`;
 }
 
 function coverOrPlaceholder(item) {
   if (item && item.src) {
-    return `<div class="cs-cover"><img src="${item.src}" alt=""/></div>`;
+    return `<div class="cs-cover"><img src="${item.src}" alt="${item.alt || ''}"/></div>`;
   }
   return `<div class="cs-cover placeholder"><span class="placeholder-tag">${(item && item.tag) || 'cover.jpg'}</span></div>`;
 }
@@ -322,6 +322,20 @@ function openCaseStudy(id) {
   backdrop.classList.add('open');
   drawer.setAttribute('aria-hidden', 'false');
   document.body.classList.add('drawer-open');
+
+  const existingCue = drawer.querySelector('.drawer-scroll-cue');
+  if (existingCue) existingCue.remove();
+  const cue = document.createElement('div');
+  cue.className = 'drawer-scroll-cue';
+  cue.setAttribute('aria-hidden', 'true');
+  cue.innerHTML = `
+    <span>Scroll</span>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+      <path d="M7 2 L7 12 M3 8 L7 12 L11 8"/>
+    </svg>
+  `;
+  drawer.appendChild(cue);
+  setTimeout(() => cue.remove(), 2900);
 }
 
 function closeCaseStudy() {
@@ -329,6 +343,8 @@ function closeCaseStudy() {
   backdrop.classList.remove('open');
   drawer.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('drawer-open');
+  const cue = drawer.querySelector('.drawer-scroll-cue');
+  if (cue) cue.remove();
 }
 
 drawerClose.addEventListener('click', closeCaseStudy);
@@ -352,6 +368,47 @@ navMobile.querySelectorAll('a').forEach((a) => {
     hamburger.setAttribute('aria-expanded', 'false');
   });
 });
+
+/* ===== Contact form ===== */
+const contactForm = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const formStatus = document.getElementById('formStatus');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+    formStatus.style.display = 'none';
+
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        contactForm.innerHTML = `
+          <div class="form-success">
+            <p class="form-success-title">Message sent.</p>
+            <p class="form-success-body">Thanks for reaching out — I’ll get back to you within a couple of business days.</p>
+          </div>
+        `;
+      } else {
+        submitBtn.textContent = 'Send Message';
+        submitBtn.disabled = false;
+        formStatus.textContent = 'Something went wrong. Please try again or email me directly.';
+        formStatus.style.display = 'block';
+      }
+    } catch (_) {
+      submitBtn.textContent = 'Send Message';
+      submitBtn.disabled = false;
+      formStatus.textContent = 'Something went wrong. Please try again or email me directly.';
+      formStatus.style.display = 'block';
+    }
+  });
+}
 
 /* ===== Reveal on scroll ===== */
 const io = new IntersectionObserver((entries) => {

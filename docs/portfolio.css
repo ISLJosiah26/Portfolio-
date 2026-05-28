@@ -875,6 +875,67 @@ footer {
   text-transform: uppercase;
 }
 
+/* ===== FORM SUCCESS STATE ===== */
+#formStatus {
+  font-size: 0.83rem;
+  color: var(--ink-mid);
+  display: none;
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+.form-success {
+  padding: 2.5rem 0 1rem;
+}
+.form-success-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+.form-success-body {
+  font-size: 0.95rem;
+  color: var(--ink-mid);
+  font-weight: 300;
+  line-height: 1.75;
+  max-width: 38ch;
+}
+
+/* ===== DRAWER SCROLL CUE ===== */
+.drawer-scroll-cue {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  pointer-events: none;
+  animation: scrollCueFade 2.8s ease forwards;
+  z-index: 10;
+  color: var(--ink-muted);
+}
+.drawer-scroll-cue span {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.drawer-scroll-cue svg {
+  animation: scrollCueBounce 0.9s ease-in-out infinite;
+}
+@keyframes scrollCueFade {
+  0%   { opacity: 0; }
+  15%  { opacity: 1; }
+  72%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes scrollCueBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
 /* ===== REVEAL ===== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px); }
@@ -886,7 +947,7 @@ footer {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .about-photo-wrap { position: static; max-width: 280px; }
+  .about-photo-wrap { position: static; max-width: 280px; margin-left: 0; }
   .services-supporting { grid-template-columns: 1fr; }
   .service-hero { padding: 2.25rem 1.75rem 2.5rem; }
   .service-hero-grid { grid-template-columns: 1fr; gap: 2.75rem; }
