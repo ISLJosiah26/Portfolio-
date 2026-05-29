@@ -450,7 +450,7 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     svg.setAttribute('height', H);
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
 
-    // Collect section boundary y positions (the dividers between sections)
+    // Collect section boundary y positions
     const sectionEls = [
       document.querySelector('.hero'),
       document.getElementById('about'),
@@ -461,33 +461,29 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
     if (!sectionEls.length) return;
 
-    // Build a list of y positions: section tops + final page bottom
     const ys = sectionEls.map((el) => docTop(el));
     ys.push(H);
 
-    // Serpentine: sweep full-width horizontally at each section boundary,
-    // alternating direction, connected by short vertical drops on each edge.
-    // Odd rows go left→right, even rows go right→left.
-    const L = 0;   // left edge
-    const R = W;   // right edge
+    // Margin for vertical edge segments — gives the snake its side rails
+    const MX = 20;
+    const LX = MX;        // left rail x
+    const RX = W - MX;    // right rail x
 
-    // Start from top-left, drop to first section boundary
-    let d = `M ${L} 0 L ${L} ${ys[0]}`;
+    // Snake: drop in left margin → sweep right → drop in right margin → sweep left → repeat
+    let d = `M ${LX} 0`;
 
     for (let i = 0; i < ys.length - 1; i++) {
       const y0 = ys[i];
       const y1 = ys[i + 1];
       if (i % 2 === 0) {
-        // left → right sweep, then drop on the right
-        d += ` L ${R} ${y0} L ${R} ${y1}`;
+        d += ` L ${LX} ${y0} L ${RX} ${y0} L ${RX} ${y1}`; // drop left, sweep right, drop right
       } else {
-        // right → left sweep, then drop on the left
-        d += ` L ${L} ${y0} L ${L} ${y1}`;
+        d += ` L ${RX} ${y0} L ${LX} ${y0} L ${LX} ${y1}`; // drop right, sweep left, drop left
       }
     }
-    // Final sweep to close out at the last edge
-    const lastY = ys[ys.length - 1];
-    d += ys.length % 2 === 0 ? ` L ${R} ${lastY}` : ` L ${L} ${lastY}`;
+    // Final edge drop to page bottom
+    const finalX = (ys.length - 1) % 2 === 0 ? LX : RX;
+    d += ` L ${finalX} ${H}`;
 
     pathEl.setAttribute('d', d);
     totalLen = pathEl.getTotalLength();
@@ -499,8 +495,8 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     if (!totalLen) return;
     const maxScroll = document.body.scrollHeight - window.innerHeight;
     const ratio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
-    // Lead with a small visible tip at scroll 0
-    const drawn = 50 + ratio * (totalLen - 50);
+    // Pre-draw enough to show the first sweep on load, then draw the rest with scroll
+    const drawn = document.documentElement.clientWidth + ratio * (totalLen - document.documentElement.clientWidth);
     pathEl.style.strokeDashoffset = totalLen - drawn;
   }
 
