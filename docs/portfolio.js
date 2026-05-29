@@ -420,3 +420,101 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+/* ===== Scroll line ===== */
+(function initScrollLine() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.innerWidth < 700) return;
+
+  const NS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(NS, 'svg');
+  svg.id = 'scroll-line-svg';
+  svg.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(svg);
+
+  const pathEl = document.createElementNS(NS, 'path');
+  pathEl.id = 'scroll-line-path';
+  svg.appendChild(pathEl);
+
+  let totalLen = 0;
+
+  function docTop(el) {
+    return el.getBoundingClientRect().top + window.scrollY;
+  }
+
+  function buildPath() {
+    const W = document.documentElement.clientWidth;
+    const H = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    // Match section padding (2.5rem ≈ 40px on large screens, 1.5rem on small)
+    const hPad = W < 800 ? 24 : 40;
+    const PAD = 10; // extra breathing room inside section bounds
+    const spineX = hPad - PAD;
+    const rightX = W - hPad + PAD;
+
+    svg.setAttribute('width', W);
+    svg.setAttribute('height', H);
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+    const sections = [
+      document.querySelector('.hero'),
+      document.getElementById('about'),
+      document.getElementById('services'),
+      document.getElementById('work'),
+      document.getElementById('contact'),
+    ].filter(Boolean);
+
+    if (!sections.length) return;
+
+    let d = `M ${spineX} 0`;
+
+    for (const el of sections) {
+      const top = docTop(el) - PAD;
+      const bottom = top + el.offsetHeight + PAD * 2;
+      d += ` L ${spineX} ${top}`;    // spine down to section top
+      d += ` L ${rightX} ${top}`;    // sweep right across top
+      d += ` L ${rightX} ${bottom}`; // down the right edge
+      d += ` L ${spineX} ${bottom}`; // sweep left across bottom
+    }
+
+    d += ` L ${spineX} ${H}`;        // spine continues to page end
+
+    pathEl.setAttribute('d', d);
+    totalLen = pathEl.getTotalLength();
+    pathEl.style.strokeDasharray = totalLen;
+    updateOffset();
+  }
+
+  function updateOffset() {
+    if (!totalLen) return;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const ratio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+    // Lead with a small visible tip at scroll 0
+    const drawn = 50 + ratio * (totalLen - 50);
+    pathEl.style.strokeDashoffset = totalLen - drawn;
+  }
+
+  let raf;
+  window.addEventListener('scroll', () => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(updateOffset);
+  }, { passive: true });
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(buildPath, 150);
+  });
+
+  // Rebuild if page height changes (e.g. case study list rendered)
+  const ro = new ResizeObserver(() => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(buildPath, 100);
+  });
+  ro.observe(document.body);
+
+  if (document.readyState === 'complete') {
+    buildPath();
+  } else {
+    window.addEventListener('load', buildPath);
+  }
+}());
