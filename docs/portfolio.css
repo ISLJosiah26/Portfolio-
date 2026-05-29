@@ -10,7 +10,7 @@
   --accent-dark: #4d7a6b;
   --ink:         #0d0d0b;
   --ink-mid:     #4a4a46;
-  --ink-muted:   #8e8d86;
+  --ink-muted:   #6e6d66; /* darkened from #8e8d86 — passes WCAG AA 4.5:1 on cream */
   --cream:       #f7f4ef;
   --cream-deep:  #ebe8e0;
   --white:       #ffffff;
@@ -28,6 +28,8 @@
 
   --max:    1080px;
   --reading: 640px;
+
+  color-scheme: light;
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
@@ -43,7 +45,33 @@ body {
 }
 body.drawer-open { overflow: hidden; }
 
+/* ===== SKIP LINK ===== */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.6rem 1.25rem;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border-radius: 0 0 3px 3px;
+  transition: top var(--fast);
+}
+.skip-link:focus { top: 0; }
+
 ::selection { background: #c8ddd8; color: var(--ink); }
+
+/* ===== FOCUS STYLES ===== */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 
 a { color: inherit; }
 
@@ -82,6 +110,8 @@ nav {
   transition: color var(--fast), border-color var(--fast);
 }
 .nav-links a.nav-cta:hover { color: var(--accent-dark); border-color: var(--accent-dark); }
+.nav-links a.nav-active { color: var(--ink); }
+.nav-links a.nav-active:not(.nav-cta) { border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
 
 .nav-hamburger {
   display: none;
@@ -172,7 +202,7 @@ nav {
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  transition: all var(--fast);
+  transition: background var(--fast), color var(--fast), border-color var(--fast);
   display: inline-block;
   border: 1px solid transparent;
   cursor: pointer;
@@ -997,6 +1027,26 @@ footer {
   stroke-linecap: round;
   stroke-linejoin: round;
   opacity: 0.28;
+}
+
+/* ===== DARK MODE ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cream:       #141311;
+    --cream-deep:  #1d1c19;
+    --ink:         #ede9e3;
+    --ink-mid:     #a8a79f;
+    --ink-muted:   #6e6d66;
+    --white:       #1d1c19;
+    --border:      #2d2c28;
+    --border-soft: #242320;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+    --shadow-md: 0 12px 40px rgba(0,0,0,0.35);
+    --shadow-lg: 0 30px 80px rgba(0,0,0,0.5);
+    color-scheme: dark;
+  }
+  nav { background: rgba(20, 19, 17, 0.9); }
+  ::selection { background: #1e3d35; }
 }
 
 @media (prefers-reduced-motion: reduce) {
