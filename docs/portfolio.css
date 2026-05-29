@@ -32,6 +32,7 @@
 
 html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
 body {
+  position: relative;
   font-family: 'DM Sans', sans-serif;
   background: var(--cream);
   color: var(--ink);
@@ -978,6 +979,24 @@ footer {
   .section-title { font-size: 1.6rem; }
   .cs-title { font-size: 2rem; }
   .cs-deck { font-size: 1.05rem; }
+}
+
+/* ===== SCROLL LINE ===== */
+#scroll-line-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+}
+#scroll-line-path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.28;
 }
 
 @media (prefers-reduced-motion: reduce) {
