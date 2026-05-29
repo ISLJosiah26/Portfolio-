@@ -246,14 +246,14 @@ const drawerClose = document.getElementById('drawerClose');
 
 function imageOrPlaceholder(item, classExtra = '') {
   if (item.src) {
-    return `<div class="cs-gallery-item ${classExtra}"><img src="${item.src}" alt="${item.alt || ''}"/></div>`;
+    return `<div class="cs-gallery-item ${classExtra}"><img src="${item.src}" alt="${item.alt || ''}" loading="lazy"/></div>`;
   }
   return `<div class="cs-gallery-item placeholder ${classExtra}"><span class="placeholder-tag">${item.tag || 'image.jpg'}</span></div>`;
 }
 
 function coverOrPlaceholder(item) {
   if (item && item.src) {
-    return `<div class="cs-cover"><img src="${item.src}" alt="${item.alt || ''}"/></div>`;
+    return `<div class="cs-cover"><img src="${item.src}" alt="${item.alt || ''}" loading="lazy"/></div>`;
   }
   return `<div class="cs-cover placeholder"><span class="placeholder-tag">${(item && item.tag) || 'cover.jpg'}</span></div>`;
 }
@@ -313,15 +313,42 @@ function renderCaseStudy(cs) {
   `;
 }
 
+/* ===== Focus trap helpers ===== */
+let drawerOpener = null;
+
+function getFocusable(container) {
+  return [...container.querySelectorAll(
+    'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )];
+}
+
+function handleDrawerTab(e) {
+  if (e.key !== 'Tab') return;
+  const focusable = getFocusable(drawer);
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
+}
+
 function openCaseStudy(id) {
   const cs = CASE_STUDIES.find((c) => c.id === id);
   if (!cs) return;
+  drawerOpener = document.activeElement;
   drawerContent.innerHTML = renderCaseStudy(cs);
   drawerScroll.scrollTop = 0;
   drawer.classList.add('open');
   backdrop.classList.add('open');
   drawer.setAttribute('aria-hidden', 'false');
   document.body.classList.add('drawer-open');
+  document.addEventListener('keydown', handleDrawerTab);
+  setTimeout(() => drawerClose.focus(), 50);
 
   const existingCue = drawer.querySelector('.drawer-scroll-cue');
   if (existingCue) existingCue.remove();
@@ -343,6 +370,8 @@ function closeCaseStudy() {
   backdrop.classList.remove('open');
   drawer.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('drawer-open');
+  document.removeEventListener('keydown', handleDrawerTab);
+  if (drawerOpener) { drawerOpener.focus(); drawerOpener = null; }
   const cue = drawer.querySelector('.drawer-scroll-cue');
   if (cue) cue.remove();
 }
@@ -420,6 +449,25 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+/* ===== Active nav section ===== */
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    const id = entry.target.id;
+    navLinks.forEach((a) => {
+      const active = a.getAttribute('href') === `#${id}`;
+      a.classList.toggle('nav-active', active);
+      if (active) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  });
+}, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+['about', 'services', 'work', 'contact'].forEach((id) => {
+  const el = document.getElementById(id);
+  if (el) navObserver.observe(el);
+});
 
 /* ===== Scroll line ===== */
 (function initScrollLine() {

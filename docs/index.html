@@ -14,10 +14,27 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Josiah Yule. Marketing, websites, and custom tools.">
   <meta name="twitter:description" content="Josiah Yule builds websites, automation, and internal tools for service businesses that have outgrown templates. Based in Halifax, NS.">
+  <meta name="color-scheme" content="light dark">
   <link rel="canonical" href="https://www.josiahyule.ca">
+  <link rel="preload" as="image" href="headshot.jpg">
+  <meta property="og:image" content="https://www.josiahyule.ca/og-image.jpg">
+  <meta name="twitter:image" content="https://www.josiahyule.ca/og-image.jpg">
   <link rel="stylesheet" href="portfolio.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Josiah Yule",
+    "url": "https://www.josiahyule.ca",
+    "jobTitle": "Freelance Web Developer & Marketing Consultant",
+    "description": "Josiah Yule builds websites, automation, and internal tools for service businesses. Based in Halifax, NS.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Halifax", "addressRegion": "NS", "addressCountry": "CA" },
+    "sameAs": ["https://www.linkedin.com/in/josiahyule"]
+  }
+  </script>
 </head>
 <body>
+  <a href="#about" class="skip-link">Skip to content</a>
 
   <nav>
     <a href="#" class="nav-logo">Josiah Yule</a>
@@ -59,7 +76,7 @@
     <div class="about-grid">
       <div class="about-photo-wrap reveal">
         <div class="about-photo" aria-label="Portrait of Josiah">
-          <img src="headshot.jpg" alt="Josiah Yule">
+          <img src="headshot.jpg" alt="Josiah Yule" width="1080" height="1350">
         </div>
       </div>
       <div class="about-body reveal">
@@ -174,16 +191,16 @@
         <div class="form-row">
           <div class="form-group">
             <label for="firstName">First Name</label>
-            <input id="firstName" name="firstName" type="text" required>
+            <input id="firstName" name="firstName" type="text" autocomplete="given-name" required>
           </div>
           <div class="form-group">
             <label for="lastName">Last Name</label>
-            <input id="lastName" name="lastName" type="text" required>
+            <input id="lastName" name="lastName" type="text" autocomplete="family-name" required>
           </div>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input id="email" name="email" type="email" required>
+          <input id="email" name="email" type="email" autocomplete="email" required>
         </div>
         <div class="form-group">
           <label for="service">What are you looking for?</label>
