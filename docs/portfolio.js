@@ -445,17 +445,13 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   function buildPath() {
     const W = document.documentElement.clientWidth;
     const H = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-    // Match section padding (2.5rem ≈ 40px on large screens, 1.5rem on small)
-    const hPad = W < 800 ? 24 : 40;
-    const PAD = 10; // extra breathing room inside section bounds
-    const spineX = hPad - PAD;
-    const rightX = W - hPad + PAD;
 
     svg.setAttribute('width', W);
     svg.setAttribute('height', H);
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
 
-    const sections = [
+    // Collect section boundary y positions (the dividers between sections)
+    const sectionEls = [
       document.querySelector('.hero'),
       document.getElementById('about'),
       document.getElementById('services'),
@@ -463,20 +459,35 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       document.getElementById('contact'),
     ].filter(Boolean);
 
-    if (!sections.length) return;
+    if (!sectionEls.length) return;
 
-    let d = `M ${spineX} 0`;
+    // Build a list of y positions: section tops + final page bottom
+    const ys = sectionEls.map((el) => docTop(el));
+    ys.push(H);
 
-    for (const el of sections) {
-      const top = docTop(el) - PAD;
-      const bottom = top + el.offsetHeight + PAD * 2;
-      d += ` L ${spineX} ${top}`;    // spine down to section top
-      d += ` L ${rightX} ${top}`;    // sweep right across top
-      d += ` L ${rightX} ${bottom}`; // down the right edge
-      d += ` L ${spineX} ${bottom}`; // sweep left across bottom
+    // Serpentine: sweep full-width horizontally at each section boundary,
+    // alternating direction, connected by short vertical drops on each edge.
+    // Odd rows go left→right, even rows go right→left.
+    const L = 0;   // left edge
+    const R = W;   // right edge
+
+    // Start from top-left, drop to first section boundary
+    let d = `M ${L} 0 L ${L} ${ys[0]}`;
+
+    for (let i = 0; i < ys.length - 1; i++) {
+      const y0 = ys[i];
+      const y1 = ys[i + 1];
+      if (i % 2 === 0) {
+        // left → right sweep, then drop on the right
+        d += ` L ${R} ${y0} L ${R} ${y1}`;
+      } else {
+        // right → left sweep, then drop on the left
+        d += ` L ${L} ${y0} L ${L} ${y1}`;
+      }
     }
-
-    d += ` L ${spineX} ${H}`;        // spine continues to page end
+    // Final sweep to close out at the last edge
+    const lastY = ys[ys.length - 1];
+    d += ys.length % 2 === 0 ? ` L ${R} ${lastY}` : ` L ${L} ${lastY}`;
 
     pathEl.setAttribute('d', d);
     totalLen = pathEl.getTotalLength();
