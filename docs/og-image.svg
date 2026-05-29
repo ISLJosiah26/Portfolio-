@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Josiah Yule — marketing, websites, and custom tools.</title>
+  <desc id="desc">Cream editorial social preview card with sage accent line and Josiah Yule portfolio text.</desc>
+  <rect width="1200" height="630" fill="#f7f4ef"/>
+  <path d="M70 80H1130V550H70Z" fill="none" stroke="#dedad2" stroke-width="2"/>
+  <path d="M70 80H1130" stroke="#6a9587" stroke-width="8"/>
+  <text x="112" y="154" fill="#6e6d66" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="7">JOSIAH YULE</text>
+  <text x="112" y="300" fill="#0d0d0b" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700">Marketing, websites,</text>
+  <text x="112" y="394" fill="#0d0d0b" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700">and custom tools.</text>
+  <text x="112" y="484" fill="#4a4a46" font-family="Arial, Helvetica, sans-serif" font-size="30">Built for service businesses that have outgrown templates.</text>
+  <text x="112" y="535" fill="#6e6d66" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="4">HALIFAX, NS · JOSIAHYULE.CA</text>
+</svg>
