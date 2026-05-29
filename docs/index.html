@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Josiah Yule. Marketing, websites, and custom tools.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <meta name="description" content="Josiah Yule builds websites, automation, and internal tools for service businesses that have outgrown templates. Based in Halifax, NS.">
   <meta property="og:type" content="website">
@@ -16,9 +17,12 @@
   <meta name="twitter:description" content="Josiah Yule builds websites, automation, and internal tools for service businesses that have outgrown templates. Based in Halifax, NS.">
   <meta name="color-scheme" content="light dark">
   <link rel="canonical" href="https://www.josiahyule.ca">
-  <link rel="preload" as="image" href="headshot.jpg">
-  <meta property="og:image" content="https://www.josiahyule.ca/og-image.jpg">
-  <meta name="twitter:image" content="https://www.josiahyule.ca/og-image.jpg">
+  <meta name="theme-color" content="#f7f4ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141311" media="(prefers-color-scheme: dark)">
+  <meta property="og:image" content="https://www.josiahyule.ca/og-image.svg">
+  <meta property="og:image:alt" content="Josiah Yule — marketing, websites, and custom tools.">
+  <meta name="twitter:image" content="https://www.josiahyule.ca/og-image.svg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="portfolio.css">
   <script type="application/ld+json">
   {
@@ -49,7 +53,7 @@
     </button>
   </nav>
 
-  <div class="nav-mobile" id="navMobile" role="dialog" aria-label="Mobile navigation">
+  <div class="nav-mobile" id="navMobile" role="dialog" aria-label="Mobile navigation" aria-modal="true" aria-hidden="true">
     <nav class="nav-mobile-links">
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -59,6 +63,7 @@
     <div class="nav-mobile-meta">Halifax, NS &middot; Available for new projects</div>
   </div>
 
+  <main id="siteContent">
   <!-- HERO -->
   <header class="hero">
     <h1>Marketing, websites, and tools.</h1>
@@ -76,13 +81,13 @@
     <div class="about-grid">
       <div class="about-photo-wrap reveal">
         <div class="about-photo" aria-label="Portrait of Josiah">
-          <img src="headshot.jpg" alt="Josiah Yule" width="1080" height="1350">
+          <img src="headshot.jpg" alt="Josiah Yule" width="1080" height="1350" loading="lazy" decoding="async" sizes="(max-width: 900px) 280px, 320px">
         </div>
       </div>
       <div class="about-body reveal">
         <p class="about-label">About</p>
         <h2 class="about-headline">Marketing, development, and the stuff in between.</h2>
-        <p>I create and develop websites, internal tools, and custom automations tailored for businesses. I've developed three branded recruitment websites, a job intelligence platform that has generated over 6,000 alerts in its first first month, and a live marketing dashboard that has streamlined what used to be a manual monthly reporting process.</p>
+        <p>I create and develop websites, internal tools, and custom automations tailored for businesses. I've developed three branded recruitment websites, a job intelligence platform that has generated over 6,000 alerts in its first month, and a live marketing dashboard that has streamlined what used to be a manual monthly reporting process.</p>
         <p>My background is in marketing, and most of what I create lies at the crossroads between marketing and tech.</p>
 
         <div class="stack">
@@ -170,8 +175,40 @@
     <h2 class="section-title">Recent projects.</h2>
 
     <ul class="work-list" id="workList">
-      <!-- populated by JS -->
+      <li class="work-entry">
+        <button class="work-button" type="button" data-id="staffing">
+          <div class="work-body"><h3 class="work-title">Recruitment websites for three sister agencies.</h3></div>
+          <span class="work-arrow" aria-hidden="true">→</span>
+        </button>
+      </li>
+      <li class="work-entry">
+        <button class="work-button" type="button" data-id="jobalerts">
+          <div class="work-body"><h3 class="work-title">Job intelligence platform for recruiters.</h3></div>
+          <span class="work-arrow" aria-hidden="true">→</span>
+        </button>
+      </li>
+      <li class="work-entry">
+        <button class="work-button" type="button" data-id="logodesign">
+          <div class="work-body"><h3 class="work-title">Logo design for an editorial consultancy.</h3></div>
+          <span class="work-arrow" aria-hidden="true">→</span>
+        </button>
+      </li>
+      <li class="work-entry">
+        <button class="work-button" type="button" data-id="wwhra">
+          <div class="work-body"><h3 class="work-title">Website for a residents association.</h3></div>
+          <span class="work-arrow" aria-hidden="true">→</span>
+        </button>
+      </li>
+      <li class="work-entry">
+        <button class="work-button" type="button" data-id="dashboard">
+          <div class="work-body"><h3 class="work-title">Marketing performance dashboard.</h3></div>
+          <span class="work-arrow" aria-hidden="true">→</span>
+        </button>
+      </li>
     </ul>
+    <noscript>
+      <p class="noscript-note">Case studies open inline with JavaScript enabled. You can still reach out through the contact form below.</p>
+    </noscript>
   </section>
 
   <!-- CONTACT -->
@@ -204,7 +241,7 @@
         </div>
         <div class="form-group">
           <label for="service">What are you looking for?</label>
-          <select id="service" name="service">
+          <select id="service" name="service" required>
             <option value="">Select a service&hellip;</option>
             <option>Website Development</option>
             <option>Brand Design</option>
@@ -215,22 +252,39 @@
         </div>
         <div class="form-group">
           <label for="message">Tell me about your project</label>
-          <textarea id="message" name="message" rows="4"></textarea>
+          <textarea id="message" name="message" rows="4" required minlength="20" autocomplete="off"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="timeline">Ideal timeline</label>
+            <input id="timeline" name="timeline" type="text" autocomplete="off" placeholder="Launch date or rough timing">
+          </div>
+          <div class="form-group">
+            <label for="budget">Budget range</label>
+            <input id="budget" name="budget" type="text" inputmode="text" autocomplete="off" placeholder="Optional">
+          </div>
+        </div>
+        <div class="form-group form-honeypot" aria-hidden="true">
+          <label for="website">Website</label>
+          <input id="website" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
         </div>
         <button class="form-submit" type="submit" id="submitBtn">Send Message</button>
+        <p class="form-privacy">Your details are only used to reply to this project inquiry.</p>
         <p id="formStatus" role="alert" aria-live="polite"></p>
       </form>
     </div>
   </section>
 
-  <footer>
+  </main>
+
+  <footer id="siteFooter">
     <span>&copy; <span id="year"></span> Josiah Yule</span>
     <span>Halifax, NS</span>
   </footer>
 
   <!-- CASE STUDY DRAWER -->
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-label="Case study">
+  <aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Case study">
     <header class="drawer-header">
       <span class="drawer-header-label" id="drawerKicker">Case study</span>
       <button class="drawer-close" id="drawerClose" aria-label="Close">
@@ -244,6 +298,6 @@
     </div>
   </aside>
 
-  <script src="portfolio.js"></script>
+  <script src="portfolio.js" defer></script>
 </body>
 </html>

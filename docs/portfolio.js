@@ -217,25 +217,30 @@ const CASE_STUDIES = [
 
 /* ===== Work list rendering ===== */
 const workList = document.getElementById('workList');
-CASE_STUDIES.forEach((cs) => {
+
+function createWorkEntry(cs) {
   const li = document.createElement('li');
   li.className = 'work-entry';
-  li.setAttribute('data-id', cs.id);
-  li.setAttribute('tabindex', '0');
-  li.setAttribute('role', 'button');
-  li.setAttribute('aria-label', `Open case study: ${cs.title}`);
   li.innerHTML = `
-    <div class="work-body">
-      <h3 class="work-title">${cs.title}</h3>
-    </div>
-    <span class="work-arrow" aria-hidden="true">→</span>
+    <button class="work-button" type="button" data-id="${cs.id}" aria-label="Open case study: ${cs.title}">
+      <div class="work-body">
+        <h3 class="work-title">${cs.title}</h3>
+      </div>
+      <span class="work-arrow" aria-hidden="true">→</span>
+    </button>
   `;
-  li.addEventListener('click', () => openCaseStudy(cs.id));
-  li.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCaseStudy(cs.id); }
+  return li;
+}
+
+if (workList) {
+  if (!workList.querySelector('.work-button')) {
+    CASE_STUDIES.forEach((cs) => workList.appendChild(createWorkEntry(cs)));
+  }
+
+  workList.querySelectorAll('.work-button[data-id]').forEach((button) => {
+    button.addEventListener('click', () => openCaseStudy(button.dataset.id));
   });
-  workList.appendChild(li);
-});
+}
 
 /* ===== Drawer ===== */
 const drawer = document.getElementById('drawer');
@@ -246,14 +251,14 @@ const drawerClose = document.getElementById('drawerClose');
 
 function imageOrPlaceholder(item, classExtra = '') {
   if (item.src) {
-    return `<div class="cs-gallery-item ${classExtra}"><img src="${item.src}" alt="${item.alt || ''}" loading="lazy"/></div>`;
+    return `<div class="cs-gallery-item ${classExtra}"><img src="${item.src}" alt="${item.alt || ''}" loading="lazy" decoding="async"/></div>`;
   }
   return `<div class="cs-gallery-item placeholder ${classExtra}"><span class="placeholder-tag">${item.tag || 'image.jpg'}</span></div>`;
 }
 
 function coverOrPlaceholder(item) {
   if (item && item.src) {
-    return `<div class="cs-cover"><img src="${item.src}" alt="${item.alt || ''}" loading="lazy"/></div>`;
+    return `<div class="cs-cover"><img src="${item.src}" alt="${item.alt || ''}" loading="lazy" decoding="async"/></div>`;
   }
   return `<div class="cs-cover placeholder"><span class="placeholder-tag">${(item && item.tag) || 'cover.jpg'}</span></div>`;
 }
@@ -385,17 +390,68 @@ document.addEventListener('keydown', (e) => {
 /* ===== Mobile nav ===== */
 const hamburger = document.getElementById('navHamburger');
 const navMobile = document.getElementById('navMobile');
+const siteContent = document.getElementById('siteContent');
+const siteFooter = document.getElementById('siteFooter');
+let navOpener = null;
+
+function setPageInert(inert) {
+  [siteContent, siteFooter, drawer, backdrop].filter(Boolean).forEach((el) => {
+    if (inert) el.setAttribute('inert', '');
+    else el.removeAttribute('inert');
+  });
+}
+
+function handleNavTab(e) {
+  if (e.key !== 'Tab') return;
+  const focusable = getFocusable(navMobile);
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
+}
+
+function openMobileNav() {
+  if (drawer.classList.contains('open')) closeCaseStudy();
+  navOpener = document.activeElement;
+  navMobile.classList.add('open');
+  navMobile.setAttribute('aria-hidden', 'false');
+  hamburger.classList.add('open');
+  hamburger.setAttribute('aria-expanded', 'true');
+  hamburger.setAttribute('aria-label', 'Close menu');
+  document.body.classList.add('nav-open');
+  setPageInert(true);
+  document.addEventListener('keydown', handleNavTab);
+  setTimeout(() => navMobile.querySelector('a')?.focus(), 50);
+}
+
+function closeMobileNav({ restoreFocus = true } = {}) {
+  navMobile.classList.remove('open');
+  navMobile.setAttribute('aria-hidden', 'true');
+  hamburger.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.setAttribute('aria-label', 'Open menu');
+  document.body.classList.remove('nav-open');
+  setPageInert(false);
+  document.removeEventListener('keydown', handleNavTab);
+  if (restoreFocus && navOpener) navOpener.focus();
+  navOpener = null;
+}
+
 hamburger.addEventListener('click', () => {
-  const open = navMobile.classList.toggle('open');
-  hamburger.classList.toggle('open', open);
-  hamburger.setAttribute('aria-expanded', String(open));
+  if (navMobile.classList.contains('open')) closeMobileNav();
+  else openMobileNav();
 });
 navMobile.querySelectorAll('a').forEach((a) => {
-  a.addEventListener('click', () => {
-    navMobile.classList.remove('open');
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-  });
+  a.addEventListener('click', () => closeMobileNav({ restoreFocus: false }));
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navMobile.classList.contains('open')) closeMobileNav();
 });
 
 /* ===== Contact form ===== */
@@ -427,13 +483,13 @@ if (contactForm) {
       } else {
         submitBtn.textContent = 'Send Message';
         submitBtn.disabled = false;
-        formStatus.textContent = 'Something went wrong. Please try again or email me directly.';
+        formStatus.textContent = 'Something went wrong. Please try again or message me on LinkedIn.';
         formStatus.style.display = 'block';
       }
     } catch (_) {
       submitBtn.textContent = 'Send Message';
       submitBtn.disabled = false;
-      formStatus.textContent = 'Something went wrong. Please try again or email me directly.';
+      formStatus.textContent = 'Something went wrong. Please try again or message me on LinkedIn.';
       formStatus.style.display = 'block';
     }
   });
@@ -555,17 +611,18 @@ const navObserver = new IntersectionObserver((entries) => {
   }, { passive: true });
 
   let resizeTimer;
-  window.addEventListener('resize', () => {
+  const scheduleBuild = (delay = 150) => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(buildPath, 150);
-  });
+    resizeTimer = setTimeout(buildPath, delay);
+  };
 
-  // Rebuild if page height changes (e.g. case study list rendered)
-  const ro = new ResizeObserver(() => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(buildPath, 100);
-  });
-  ro.observe(document.body);
+  window.addEventListener('resize', () => scheduleBuild(), { passive: true });
+
+  // Rebuild only when primary content regions change size, avoiding a body-wide observer.
+  if ('ResizeObserver' in window) {
+    const ro = new ResizeObserver(() => scheduleBuild(120));
+    [document.querySelector('.hero'), ...document.querySelectorAll('main > section')].filter(Boolean).forEach((el) => ro.observe(el));
+  }
 
   if (document.readyState === 'complete') {
     buildPath();

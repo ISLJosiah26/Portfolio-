@@ -43,7 +43,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
 }
-body.drawer-open { overflow: hidden; }
+body.drawer-open, body.nav-open { overflow: hidden; }
 
 /* ===== SKIP LINK ===== */
 .skip-link {
@@ -68,9 +68,9 @@ body.drawer-open { overflow: hidden; }
 /* ===== FOCUS STYLES ===== */
 :focus { outline: none; }
 :focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 2px;
+  outline: 2px solid var(--accent-dark);
+  outline-offset: 4px;
+  border-radius: 3px;
 }
 
 a { color: inherit; }
@@ -142,6 +142,7 @@ nav {
   display: flex; flex-direction: column;
 }
 .nav-mobile.open { transform: translateX(0); visibility: visible; }
+.nav-mobile[aria-hidden="true"] { pointer-events: none; }
 .nav-mobile-links { display: flex; flex-direction: column; flex: 1; }
 .nav-mobile-links a {
   text-decoration: none;
@@ -490,19 +491,37 @@ section, header {
   list-style: none;
 }
 .work-entry {
+  border-bottom: 1px solid var(--border-soft);
+  position: relative;
+}
+.work-button {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 2.5rem;
   align-items: baseline;
+  width: 100%;
+  min-height: 4.75rem;
   padding: 2.25rem 0;
-  border-bottom: 1px solid var(--border-soft);
+  border: 0;
+  background: transparent;
+  color: inherit;
   cursor: pointer;
+  font: inherit;
+  text-align: left;
   transition: padding-left var(--fast) var(--ease), background var(--fast);
-  position: relative;
+  -webkit-tap-highlight-color: transparent;
 }
-.work-entry:hover { padding-left: 0.5rem; background: var(--cream-deep); }
-.work-entry:hover .work-title { color: var(--accent-dark); }
-.work-entry:hover .work-arrow { transform: translate(4px, -2px); color: var(--accent-dark); }
+.work-button:hover { padding-left: 0.5rem; background: var(--cream-deep); }
+.work-button:hover .work-title { color: var(--accent-dark); }
+.work-button:hover .work-arrow { transform: translate(4px, -2px); color: var(--accent-dark); }
+.work-button:focus-visible { background: var(--cream-deep); }
+
+.noscript-note {
+  margin-top: 1.5rem;
+  color: var(--ink-mid);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
 
 .work-year {
   font-size: 0.74rem;
@@ -601,7 +620,11 @@ section, header {
   transition: border-color var(--fast);
   border-radius: 0;
 }
-.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent-dark); }
+.form-group input:focus-visible, .form-group textarea:focus-visible, .form-group select:focus-visible {
+  outline: 2px solid var(--accent-dark);
+  outline-offset: 4px;
+}
 .form-group textarea { resize: vertical; min-height: 80px; }
 .form-group select {
   background: transparent;
@@ -632,10 +655,25 @@ section, header {
   text-transform: uppercase;
   cursor: pointer;
   width: fit-content;
-  transition: background var(--fast);
+  transition: background var(--fast), opacity var(--fast);
   margin-top: 0.5rem;
+  min-height: 44px;
 }
+.form-submit:disabled { cursor: wait; opacity: 0.72; }
 .form-submit:hover { background: var(--accent-dark); }
+.form-privacy {
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+.form-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.form-group input::placeholder { color: color-mix(in srgb, var(--ink-muted) 78%, transparent); }
 
 /* ===== FOOTER ===== */
 footer {
@@ -994,8 +1032,8 @@ footer {
   .contact-inner { padding: 0 1.5rem; }
   footer { padding: 1.5rem; flex-direction: column; gap: 0.4rem; }
 
-  .work-entry { grid-template-columns: 1fr; gap: 0.3rem; padding: 1.75rem 0; }
-  .work-entry .work-arrow { display: none; }
+  .work-button { grid-template-columns: 1fr; gap: 0.3rem; padding: 1.75rem 0; }
+  .work-button .work-arrow { display: none; }
 
   .cs-body { padding: 4rem 1.5rem 4rem; }
   .cs-gallery { grid-template-columns: 1fr; }
@@ -1036,7 +1074,7 @@ footer {
     --cream-deep:  #1d1c19;
     --ink:         #ede9e3;
     --ink-mid:     #a8a79f;
-    --ink-muted:   #6e6d66;
+    --ink-muted:   #97958d;
     --white:       #1d1c19;
     --border:      #2d2c28;
     --border-soft: #242320;
