@@ -15,14 +15,14 @@ const CASE_STUDIES = [
     year: '2026',
     client: 'Integrated Staffing Group',
     role: 'Design & Development',
-    deck: 'Three sister agencies, each with a distinct brand, built on a unified system — proper recruitment platforms, not brochures, with live job boards pulling from external listings.',
+    deck: 'Three sister agencies, each with a distinct brand, built on a shared system. Proper recruitment platforms with live job boards, not brochures.',
     cover: { src: 'staffing-integrated.jpg', alt: 'Integrated Staffing website homepage', tag: 'staffing-cover.jpg' },
     sections: [
       {
         label: 'The brief',
         body: [
-          "Integrated Staffing, Accountant Staffing, and Administrative Staffing are three sister agencies serving different client bases. Each needed a website that could work as part of a unified system while keeping each company visually separate.",
-          "The sites needed to function as proper recruitment platforms, not just brochures — with live job boards pulling from external listings."
+          "Integrated Staffing, Accountant Staffing, and Administrative Staffing are three sister agencies serving different client bases. Each needed a website that worked as part of a unified system while keeping each brand visually separate.",
+          "The sites needed to function as proper recruitment platforms with live job boards, not just brochures."
         ]
       },
       {
@@ -65,14 +65,14 @@ const CASE_STUDIES = [
     year: '2026',
     client: 'Integrated Staffing Group',
     role: 'Product & Development',
-    deck: 'A job intelligence program built in Python that monitors external job boards, cross-references postings against the client list, and alerts consultants before a placement opportunity slips away.',
+    deck: 'A Python program that monitors external job boards, cross-references postings against the client list, and alerts consultants before a placement opportunity slips away.',
     cover: { src: '', tag: 'clientwatch-cover.jpg' },
     sections: [
       {
         label: 'The problem',
         body: [
           "Recruitment consultants at the three sister agencies had a blind spot: existing clients quietly posting jobs on public boards, often with competitors. Their CRM had no way to catch this.",
-          "When a client is actively hiring, a recruitment agency has real leverage. A consultant who calls the day a role goes live is in a much better position than one who finds out weeks later — or not at all."
+          "When a client is actively hiring, a recruitment agency has real leverage. A consultant who calls the day a role goes live is in a far better position than one who finds out weeks later, or not at all."
         ]
       },
       {
@@ -86,7 +86,7 @@ const CASE_STUDIES = [
         label: 'How it works',
         body: [
           "The program scrapes and monitors external job boards on a recurring schedule. Each posting is compared against the client list across all three agencies. When a match is confirmed, the relevant consultant is alerted.",
-          "Built entirely solo in Python and designed specifically around how recruitment consultants actually work day to day — not around a generic automation framework."
+          "Built entirely solo in Python, designed around how recruitment consultants actually work, not around a generic automation framework."
         ]
       },
       {
@@ -113,27 +113,27 @@ const CASE_STUDIES = [
     year: '2026',
     client: 'Claros',
     role: 'Brand Design',
-    deck: 'A stamp-style seal for an editorial consultancy whose name comes from an ancient prophetic shrine of Apollo — with Apollo himself at the centre.',
+    deck: 'A stamp-style seal for an editorial consultancy whose name comes from an ancient prophetic shrine of Apollo, with Apollo at the centre.',
     cover: { src: '', tag: 'logo-cover.jpg' },
     sections: [
       {
         label: 'The brief',
         body: [
           "Claros is an editorial consultancy whose name comes from a real place: an ancient prophetic shrine of Apollo in western Turkey. The client wanted the logo to reflect that origin directly, with a depiction of Apollo as the central figure.",
-          "Specific direction was given: male, bare-chested with robes, seated toward the viewer, one hand holding a torch and the other a lyre."
+          "Specific direction was given on the figure: male, bare-chested with robes, seated toward the viewer, one hand holding a torch and the other a lyre."
         ]
       },
       {
         label: 'The approach',
         body: [
-          "Built in Adobe Illustrator. The direction was clear enough on the figure, so the work was mostly interpretive — translating a specific mythological reference into something that functioned as a logo rather than an illustration.",
+          "Built in Adobe Illustrator. The direction on the figure was clear, so the work was interpretive: translating a specific mythological reference into something that functioned as a logo rather than an illustration.",
           "The result is a stamp-style seal with Apollo at centre, rendered in a woodcut-influenced style with the company name set in spaced capitals around the perimeter. Delivered in both light and dark versions."
         ]
       },
       {
         label: 'Outcome',
         body: [
-          "A logo that carries genuine symbolic weight without being decorative for its own sake. The seal format gives it authority, and the monochrome treatment keeps it flexible across different applications."
+          "A logo that carries genuine symbolic weight without being decorative for its own sake. The seal format gives it authority. The monochrome treatment keeps it flexible across applications."
         ]
       }
     ],
@@ -148,27 +148,27 @@ const CASE_STUDIES = [
     year: '2026',
     client: 'Westwood Hills Residents Association',
     role: 'Design & Development',
-    deck: 'A community website built to function as the actual operational hub for the neighbourhood — handling events, updates, resources, and contact, manageable by people who are not developers.',
+    deck: 'A community website built as the operational hub for the neighbourhood. Events, updates, resources, and contact, managed by non-developers.',
     cover: { src: '', tag: 'wwhra-cover.jpg' },
     sections: [
       {
         label: 'The brief',
         body: [
-          "The Westwood Hills Residents Association needed a website that could serve as the actual operational hub for the community, not just a landing page. It needed to handle events, community updates, resource pages, and contact forms.",
-          "It also needed to be manageable by people who are not developers — the board updates content themselves and that had to stay true long after launch."
+          "The Westwood Hills Residents Association needed a website that functioned as the operational hub for the community, not just a landing page. It needed to handle events, community updates, resource pages, and contact forms.",
+          "It also needed to be manageable by people who are not developers. The board updates content themselves, and that had to hold long after launch."
         ]
       },
       {
         label: 'The approach',
         body: [
-          "Built on WordPress and hosted on Hostinger. WordPress made sense here because the association needs to update content themselves without touching code.",
-          "The site was structured around how residents actually use it: finding upcoming events, reading updates, accessing shared resources, and reaching the board. Design was kept functional and clear."
+          "Built on WordPress and hosted on Hostinger. WordPress made sense here because the association updates content themselves without touching code.",
+          "The site is structured around how residents use it: finding upcoming events, reading updates, accessing shared resources, and reaching the board. Design is functional and clear."
         ]
       },
       {
         label: 'Outcome',
         body: [
-          "The site is live at wwhra.com and serves as the community's primary information channel."
+          "Live at wwhra.com and serving as the community's primary information channel."
         ]
       }
     ],
@@ -185,7 +185,7 @@ const CASE_STUDIES = [
     year: '2026',
     client: 'Integrated Staffing',
     role: 'Design & Development',
-    deck: 'A real-time KPI dashboard that consolidates data from Hootsuite, Squarespace Analytics, and GA4 into a single view — replacing a manual monthly reporting process.',
+    deck: 'A real-time KPI dashboard consolidating data from Hootsuite, Squarespace Analytics, and GA4 into a single view. It replaced a manual monthly reporting process.',
     cover: { src: 'dashboard-cover.jpg', alt: 'Marketing performance dashboard showing KPI charts', tag: 'dashboard-cover.jpg' },
     sections: [
       {
@@ -199,13 +199,13 @@ const CASE_STUDIES = [
         label: 'The build',
         body: [
           "The dashboard consolidates data from all three sources into a single view. Data flows through a custom Google Apps Script endpoint connected to Google Sheets, with the front end built using Chart.js.",
-          "The dashboard tracks social media performance, website analytics, and quarter-over-quarter trends without anyone having to compile anything manually."
+          "Social media performance, website analytics, and quarter-over-quarter trends are tracked without anyone having to compile anything manually."
         ],
         bullets: [
           "Website analytics: sessions, sources, top pages, conversion events from GA4",
           "Social performance: follower growth, engagement, and reach via Hootsuite",
           "Quarter-over-quarter deltas for every KPI",
-          "Replaced a recurring manual reporting process — data accessible any point in the month"
+          "Data accessible at any point in the month, not just at the end of it"
         ]
       }
     ],
