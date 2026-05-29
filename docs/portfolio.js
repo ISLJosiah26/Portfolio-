@@ -15,34 +15,34 @@ const CASE_STUDIES = [
     year: '2026',
     client: 'Integrated Staffing Group',
     role: 'Design & Development',
-    deck: 'Three sister agencies in Atlantic Canada, each with a separate brand, built on a shared technical foundation from scratch on Squarespace.',
+    deck: 'Three sister agencies, each with a distinct brand, built on a unified system — proper recruitment platforms, not brochures, with live job boards pulling from external listings.',
     cover: { src: 'staffing-integrated.jpg', alt: 'Integrated Staffing website homepage', tag: 'staffing-cover.jpg' },
     sections: [
       {
         label: 'The brief',
         body: [
-          "Integrated Staffing, Accountant Staffing, and Administrative Staffing are three sister agencies serving different client bases. Each had an aging website that no longer reflected the business. The marketing infrastructure was duplicated across all three with no shared system.",
-          "The brief: rebuild all three from the ground up, keeping each brand distinct while running on one technical foundation."
+          "Integrated Staffing, Accountant Staffing, and Administrative Staffing are three sister agencies serving different client bases. Each needed a website that could work as part of a unified system while keeping each company visually separate.",
+          "The sites needed to function as proper recruitment platforms, not just brochures — with live job boards pulling from external listings."
         ]
       },
       {
         label: 'The approach',
         body: [
-          "Each site runs on Squarespace, but almost nothing is off-the-shelf. The structure, components, and interactions are custom HTML, CSS, and JavaScript injected into each site. The agencies kept the CMS they already knew; the template constraints were removed.",
-          "All three sites share a component library. Type scales, button styles, animation timing, and layout grids are consistent across the group. What changes per site is the brand: colour palette, photography, and copy voice for each agency's audience. A change to one site can be ported to the others in a few hours."
+          "All three were built on Squarespace within a couple of months, using custom HTML, CSS, and JavaScript throughout to go beyond what the platform offers out of the box.",
+          "A shared visual system establishes consistency across the group without making the brands feel identical. What changes per site is the brand: colour palette, photography, and copy voice for each agency's audience."
         ]
       },
       {
         label: 'Live job boards',
         body: [
-          "Each site has a live job board pulling from the agency's CRM via external API. Postings update in real time, candidates can filter by category, location, and seniority, and applications go directly into the existing pipeline.",
+          "Each job board connects to an external API and updates automatically. Postings stay current without manual intervention, and candidates can filter and apply directly through the site.",
           "Each job board is custom-built. No plugin handled the exact requirements."
         ]
       },
       {
         label: 'Outcome',
         body: [
-          "All three sites launched in the same quarter. Organic traffic uplift of +15% across all three brands within the first six months."
+          "Traffic increased 15% across all three brands following launch."
         ]
       }
     ],
@@ -65,40 +65,40 @@ const CASE_STUDIES = [
     year: '2026',
     client: 'Integrated Staffing Group',
     role: 'Product & Development',
-    deck: 'A job intelligence platform running across three recruitment agencies. It monitors job boards across Atlantic Canada and alerts the right consultant when one of their clients posts a role.',
+    deck: 'A job intelligence program built in Python that monitors external job boards, cross-references postings against the client list, and alerts consultants before a placement opportunity slips away.',
     cover: { src: '', tag: 'clientwatch-cover.jpg' },
     sections: [
       {
         label: 'The problem',
         body: [
-          "When a client is actively hiring, a recruitment agency has real leverage. A consultant who calls the day a role goes live is in a much better position than one who finds out weeks later.",
-          "There was no reliable way to know when clients were hiring. Consultants relied on cold outreach, manual job board checks, or chance. Clients would post a role and sign with someone else before anyone at the agency found out."
+          "Recruitment consultants at the three sister agencies had a blind spot: existing clients quietly posting jobs on public boards, often with competitors. Their CRM had no way to catch this.",
+          "When a client is actively hiring, a recruitment agency has real leverage. A consultant who calls the day a role goes live is in a much better position than one who finds out weeks later — or not at all."
         ]
       },
       {
         label: 'What it does',
         body: [
-          "ClientWatch monitors job boards across Atlantic Canada and alerts the right recruitment consultant when one of their existing clients posts a new opening.",
-          "It also flags lapsed clients who have started hiring again. In production at Integrated Staffing, Accountant Staffing, and Administrative Staffing."
+          "ClientWatch monitors external job boards, cross-references postings against the client list, and alerts the right consultant when a match is found.",
+          "It also flags lapsed clients who have started hiring again. In active use across all three agencies."
         ]
       },
       {
         label: 'How it works',
         body: [
-          "Every two hours during business hours (Monday through Friday, 7am to 7pm AST), ClientWatch runs three scanners simultaneously against Job Bank Canada, LinkedIn, and Adzuna. Each scanner pulls all postings from Nova Scotia, New Brunswick, PEI, and Newfoundland.",
-          "Each posting is compared against 1,800+ companies across all three agencies. When a match is confirmed, a Slack notification fires to the relevant agency's channel, and the alert queues for the 7am morning digest email."
+          "The program scrapes and monitors external job boards on a recurring schedule. Each posting is compared against the client list across all three agencies. When a match is confirmed, the relevant consultant is alerted.",
+          "Built entirely solo in Python and designed specifically around how recruitment consultants actually work day to day — not around a generic automation framework."
         ]
       },
       {
         label: 'Stack',
         body: [
-          "Node.js on Railway, Supabase (PostgreSQL) for the client list and alert history, Axios and Cheerio for scraping, Adzuna API for additional aggregation, Resend for digest emails, Slack incoming webhooks for real-time alerts."
+          "Python, hosted on GitHub. Built and maintained as a focused tool for a specific workflow."
         ],
         bullets: [
-          "6,000+ alerts sent in the first month of production",
-          "1,800+ client companies monitored across three agencies",
-          "Job Bank Canada, LinkedIn, and Adzuna covered simultaneously",
-          "Province-routed Slack notifications per agency"
+          "Monitors external job boards automatically",
+          "Cross-references postings against the full client list",
+          "Alerts consultants when an existing client is hiring",
+          "In active use across all three agencies"
         ]
       }
     ],
@@ -109,31 +109,31 @@ const CASE_STUDIES = [
 
   {
     id: 'logodesign',
-    title: 'Logo design for an editing firm.',
+    title: 'Logo design for an editorial consultancy.',
     year: '2026',
-    client: 'Confidential',
+    client: 'Claros',
     role: 'Brand Design',
-    deck: 'A logo and visual identity for a professional editing firm — built to feel precise, credible, and distinct in a crowded market.',
+    deck: 'A stamp-style seal for an editorial consultancy whose name comes from an ancient prophetic shrine of Apollo — with Apollo himself at the centre.',
     cover: { src: '', tag: 'logo-cover.jpg' },
     sections: [
       {
         label: 'The brief',
         body: [
-          "The client is a professional editing firm looking to establish a stronger brand presence. The existing identity was inconsistent and didn't reflect the quality and precision of their work.",
-          "The goal was a clean, distinctive mark that would work across digital and print — business cards, website, proposals, and email headers."
+          "Claros is an editorial consultancy whose name comes from a real place: an ancient prophetic shrine of Apollo in western Turkey. The client wanted the logo to reflect that origin directly, with a depiction of Apollo as the central figure.",
+          "Specific direction was given: male, bare-chested with robes, seated toward the viewer, one hand holding a torch and the other a lyre."
         ]
       },
       {
         label: 'The approach',
         body: [
-          "Explored several directions before settling on a mark that balances editorial precision with a modern, professional feel. Typography and spacing were treated as the primary design elements.",
-          "Delivered final logo in multiple formats: primary lockup, stacked variant, and icon-only mark. Accompanied by a one-page brand guide covering colour palette, type, and usage rules."
+          "Built in Adobe Illustrator. The direction was clear enough on the figure, so the work was mostly interpretive — translating a specific mythological reference into something that functioned as a logo rather than an illustration.",
+          "The result is a stamp-style seal with Apollo at centre, rendered in a woodcut-influenced style with the company name set in spaced capitals around the perimeter. Delivered in both light and dark versions."
         ]
       },
       {
         label: 'Outcome',
         body: [
-          "A cohesive visual identity ready for immediate deployment across all brand touchpoints."
+          "A logo that carries genuine symbolic weight without being decorative for its own sake. The seal format gives it authority, and the monochrome treatment keeps it flexible across different applications."
         ]
       }
     ],
@@ -148,27 +148,27 @@ const CASE_STUDIES = [
     year: '2026',
     client: 'Westwood Hills Residents Association',
     role: 'Design & Development',
-    deck: 'A full redesign of the digital presence for a volunteer-run community association in Upper Tantallon, NS — replacing an aging Joomla site with a clean, accessible, and easy-to-maintain web presence.',
+    deck: 'A community website built to function as the actual operational hub for the neighbourhood — handling events, updates, resources, and contact, manageable by people who are not developers.',
     cover: { src: '', tag: 'wwhra-cover.jpg' },
     sections: [
       {
         label: 'The brief',
         body: [
-          "The Westwood Hills Residents Association is a volunteer-run community organization serving a neighbourhood of approximately 5,000 residents in Upper Tantallon, Nova Scotia. Their site was built on Joomla and hadn't been meaningfully updated in years — difficult to navigate, not mobile-friendly, and hard for the volunteer board to maintain.",
-          "The goal was a clean, fast, accessible site that the association could manage themselves without technical help. It needed to surface key community information quickly: meeting minutes, health clinic schedules, emergency resources, and board contacts."
+          "The Westwood Hills Residents Association needed a website that could serve as the actual operational hub for the community, not just a landing page. It needed to handle events, community updates, resource pages, and contact forms.",
+          "It also needed to be manageable by people who are not developers — the board updates content themselves and that had to stay true long after launch."
         ]
       },
       {
         label: 'The approach',
         body: [
-          "Given the volunteer context, the right tool was a static site — fast to load, cheap to host, and with no CMS overhead to maintain. Content was restructured around what residents actually need: upcoming events, resident resources, and how to get involved.",
-          "The design is deliberately simple. Large type, high contrast, no unnecessary chrome. The navigation mirrors how residents think about the organization, not how the old site was organized. Every page is mobile-first."
+          "Built on WordPress and hosted on Hostinger. WordPress made sense here because the association needs to update content themselves without touching code.",
+          "The site was structured around how residents actually use it: finding upcoming events, reading updates, accessing shared resources, and reaching the board. Design was kept functional and clear."
         ]
       },
       {
         label: 'Outcome',
         body: [
-          "A significantly faster and more accessible site that the volunteer board can update without developer involvement. Page load times reduced from multi-second Joomla renders to near-instant static delivery."
+          "The site is live at wwhra.com and serves as the community's primary information channel."
         ]
       }
     ],
@@ -185,27 +185,27 @@ const CASE_STUDIES = [
     year: '2026',
     client: 'Integrated Staffing',
     role: 'Design & Development',
-    deck: 'A live KPI dashboard that pulls data from Google Sheets through a custom Apps Script endpoint. Replaced a manual monthly reporting process.',
+    deck: 'A real-time KPI dashboard that consolidates data from Hootsuite, Squarespace Analytics, and GA4 into a single view — replacing a manual monthly reporting process.',
     cover: { src: 'dashboard-cover.jpg', alt: 'Marketing performance dashboard showing KPI charts', tag: 'dashboard-cover.jpg' },
     sections: [
       {
         label: 'The problem',
         body: [
-          "Monthly marketing reporting was manual work: pull GA4 numbers, copy social stats from each platform, paste into a slide deck, calculate quarter-over-quarter changes by hand, and send a PDF to leadership a week into the following month.",
+          "Reporting on marketing performance across the three sister agencies was a manual process: pull from Hootsuite, Squarespace Analytics, and GA4 separately, then assemble it by hand each month.",
           "By the time the report landed, the numbers were already old. There was no way to check current figures between cycles without starting over."
         ]
       },
       {
         label: 'The build',
         body: [
-          "The dashboard is a single web page that fetches live data from a Google Sheet through a Google Apps Script web app endpoint. The sheet is fed from GA4 exports and social platform analytics, refreshed on a schedule.",
-          "Numbers are rendered with Chart.js for trend charts. KPIs are computed on the client: quarter-over-quarter deltas, rolling averages, and channel breakouts."
+          "The dashboard consolidates data from all three sources into a single view. Data flows through a custom Google Apps Script endpoint connected to Google Sheets, with the front end built using Chart.js.",
+          "The dashboard tracks social media performance, website analytics, and quarter-over-quarter trends without anyone having to compile anything manually."
         ],
         bullets: [
           "Website analytics: sessions, sources, top pages, conversion events from GA4",
-          "Social performance: follower growth, engagement, and reach across LinkedIn, Instagram, and Facebook",
+          "Social performance: follower growth, engagement, and reach via Hootsuite",
           "Quarter-over-quarter deltas for every KPI",
-          "Replaced approximately 6 hours of manual reporting work per month"
+          "Replaced a recurring manual reporting process — data accessible any point in the month"
         ]
       }
     ],
