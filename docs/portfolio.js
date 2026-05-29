@@ -109,7 +109,7 @@ const CASE_STUDIES = [
 
   {
     id: 'logodesign',
-    title: 'Logo design for an editorial consultancy.',
+    title: 'Logo design for an editorial firm.',
     year: '2026',
     client: 'Claros',
     role: 'Brand Design',
