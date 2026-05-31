@@ -65,7 +65,7 @@ const CASE_STUDIES = [
     year: '2026',
     client: 'Integrated Staffing Group',
     role: 'Product & Development',
-    deck: 'A Python program that monitors external job boards, cross-references postings against the client list, and alerts consultants before a placement opportunity slips away.',
+    deck: 'A custom web scraping pipeline that monitors Job Bank, LinkedIn, and Adzuna for postings from existing clients, scores each match, and alerts the right consultant before a placement opportunity slips away.',
     cover: { src: '', tag: 'clientwatch-cover.jpg' },
     sections: [
       {
@@ -78,33 +78,83 @@ const CASE_STUDIES = [
       {
         label: 'What it does',
         body: [
-          "ClientWatch monitors external job boards, cross-references postings against the client list, and alerts the right consultant when a match is found.",
-          "It also flags lapsed clients who have started hiring again. In active use across all three agencies."
+          "ClientWatch monitors Job Bank, LinkedIn, and Adzuna for new postings, cross-references each one against the client list across all three agencies, and alerts the right consultant when a match is found.",
+          "Matches are confidence-scored using normalisation logic, so a posting from a known client is recognised even when the company name is formatted differently from one board to the next."
         ]
       },
       {
         label: 'How it works',
         body: [
-          "The program scrapes and monitors external job boards on a recurring schedule. Each posting is compared against the client list across all three agencies. When a match is confirmed, the relevant consultant is alerted.",
-          "Built entirely solo in Python, designed around how recruitment consultants actually work, not around a generic automation framework."
+          "A custom scraping pipeline pulls postings from each source on a recurring schedule, with deduplication and rate limiting built in to stay reliable and avoid hammering the boards.",
+          "Confirmed matches are pushed to consultants through Slack integrations across two workspaces and rolled up into an automated digest email every morning. A multi-user dashboard, backed by Supabase, gives the team a shared view of every alert."
         ]
       },
       {
         label: 'Stack',
         body: [
-          "Python, hosted on GitHub. Built and maintained as a focused tool for a specific workflow."
+          "A Python scraping pipeline with Slack API integrations and a Supabase-backed dashboard. Built and maintained solo as a focused tool for a specific workflow."
         ],
         bullets: [
-          "Monitors external job boards automatically",
-          "Cross-references postings against the full client list",
-          "Alerts consultants when an existing client is hiring",
-          "In active use across all three agencies"
+          "Monitors Job Bank, LinkedIn, and Adzuna on a schedule",
+          "Confidence-scored client matching with normalisation logic",
+          "Slack alerts across two workspaces and automated morning digest emails",
+          "Deduplication, rate limiting, and a multi-user Supabase dashboard"
+        ]
+      },
+      {
+        label: 'Outcome',
+        body: [
+          "Generated over 6,000 alerts in its first month across the three agencies."
         ]
       }
     ],
     quote: null,
     gallery: [],
     links: []
+  },
+
+  {
+    id: 'allowance',
+    title: 'Personal budgeting app.',
+    year: '2026',
+    client: 'Personal project',
+    role: 'Design & Development',
+    deck: 'A full-stack progressive web app for personal budgeting. Real-time spending tracking, budget management by category, and multi-user data isolation, built on React and Supabase.',
+    cover: { src: '', tag: 'allowance-cover.jpg' },
+    sections: [
+      {
+        label: 'The idea',
+        body: [
+          "Allowance answers a single question: how much do I actually have left to spend? Most budgeting apps bury that behind dashboards, categories, and charts. This one puts it first.",
+          "Built as a personal project, designed to be the simplest way to see what's left once income, expenses, and budgets are accounted for."
+        ]
+      },
+      {
+        label: 'What it does',
+        body: [
+          "Users log income and expenses, set budgets by category, and watch their remaining balance update in real time as they spend.",
+          "Every account is fully isolated. Row-level security in Supabase means each user only ever sees their own data."
+        ]
+      },
+      {
+        label: 'The build',
+        body: [
+          "A full-stack progressive web app built with React and Tailwind CSS on the front end, backed by Supabase for authentication, database, and security.",
+          "As a PWA it installs on mobile and desktop and runs like a native app, while staying a single codebase on the web."
+        ],
+        bullets: [
+          "User authentication and secure sessions",
+          "Real-time spending tracking against budgets",
+          "Budget management by category, with income and expense logging",
+          "Row-level security for multi-user data isolation"
+        ]
+      }
+    ],
+    quote: null,
+    gallery: [],
+    links: [
+      { label: 'allowance-flame.vercel.app', href: 'https://allowance-flame.vercel.app', meta: 'live' }
+    ]
   },
 
   {
