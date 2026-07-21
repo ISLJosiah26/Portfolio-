@@ -4,26 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Josiah Yule. Marketing, websites, and custom tools.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <meta name="description" content="Josiah Yule builds websites, automation, and internal tools for service businesses that have outgrown templates. Based in Halifax, NS.">
+  <link rel="preload" href="fonts/spacegrotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/dmsans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="description" content="Josiah Yule builds websites, automation, and internal tools for service businesses. Based in Halifax, NS.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.josiahyule.ca">
   <meta property="og:title" content="Josiah Yule. Marketing, websites, and custom tools.">
-  <meta property="og:description" content="Josiah Yule builds websites, automation, and internal tools for service businesses that have outgrown templates. Based in Halifax, NS.">
+  <meta property="og:description" content="Josiah Yule builds websites, automation, and internal tools for service businesses. Based in Halifax, NS.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Josiah Yule. Marketing, websites, and custom tools.">
-  <meta name="twitter:description" content="Josiah Yule builds websites, automation, and internal tools for service businesses that have outgrown templates. Based in Halifax, NS.">
+  <meta name="twitter:description" content="Josiah Yule builds websites, automation, and internal tools for service businesses. Based in Halifax, NS.">
   <meta name="color-scheme" content="light dark">
   <link rel="canonical" href="https://www.josiahyule.ca">
   <meta name="theme-color" content="#f7f4ef" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#141311" media="(prefers-color-scheme: dark)">
-  <meta property="og:image" content="https://www.josiahyule.ca/og-image.svg">
-  <meta property="og:image:alt" content="Josiah Yule — marketing, websites, and custom tools.">
-  <meta name="twitter:image" content="https://www.josiahyule.ca/og-image.svg">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:image" content="https://www.josiahyule.ca/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Josiah Yule. Marketing, websites, and custom tools.">
+  <meta name="twitter:image" content="https://www.josiahyule.ca/og-image.png">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="portfolio.css">
+  <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -66,12 +68,18 @@
   <main id="siteContent">
   <!-- HERO -->
   <header class="hero">
-    <h1>Marketing, websites, and tools.</h1>
-    <p class="hero-bio">I build websites, automation, and internal tools for businesses.</p>
+    <p class="hero-status"><span class="status-dot" aria-hidden="true"></span>Available for new projects &middot; Halifax, NS</p>
+    <h1>Marketing, websites, and custom tools.</h1>
+    <p class="hero-bio">I design and build websites, automations, and internal dashboards for businesses. This past year I built three recruitment platforms with live job boards, a monitoring pipeline that sent recruiters over 6,000 alerts in its first month, and a KPI dashboard that replaced a manual monthly report.</p>
     <div class="hero-actions">
       <a href="#work" class="btn btn-filled">See selected work</a>
       <a href="#contact" class="btn btn-outline">Start a project</a>
     </div>
+    <ul class="hero-proof">
+      <li><a href="work/staffing/" data-id="staffing"><span class="proof-num">3</span><span class="proof-label">recruitment sites on one shared system</span></a></li>
+      <li><a href="work/intelligence/" data-id="intelligence"><span class="proof-num">6,000+</span><span class="proof-label">client alerts in the platform&rsquo;s first month</span></a></li>
+      <li><a href="work/dashboard/" data-id="dashboard"><span class="proof-num">3&rarr;1</span><span class="proof-label">analytics sources merged into one live dashboard</span></a></li>
+    </ul>
   </header>
 
 
@@ -81,7 +89,7 @@
     <div class="about-grid">
       <div class="about-photo-wrap reveal">
         <div class="about-photo" aria-label="Portrait of Josiah">
-          <img src="headshot.jpg" alt="Josiah Yule" width="1080" height="1350" loading="lazy" decoding="async" sizes="(max-width: 900px) 280px, 320px">
+          <img src="headshot-800.webp" srcset="headshot-400.webp 400w, headshot-800.webp 800w" sizes="(max-width: 900px) 280px, 320px" alt="Josiah Yule" width="800" height="1000" loading="lazy" decoding="async">
         </div>
       </div>
       <div class="about-body reveal">
@@ -121,7 +129,7 @@
           <div class="service-hero-main">
             <h3>Website<br>Development.</h3>
             <p class="service-hero-lede">A good website is still one of the highest-leverage investments a small business can make.</p>
-            <p class="service-hero-body">I build websites from scratch for businesses that have outgrown templates. Every project is designed around how your customers actually find and evaluate you, not what a theme can do out of the box.</p>
+            <p class="service-hero-body">I build websites from scratch for small service businesses. Every project is designed around how your customers find and evaluate you, not what a theme can do out of the box.</p>
             <a href="#contact" class="service-hero-cta">Start a project</a>
           </div>
           <div class="service-hero-meta">
@@ -147,17 +155,17 @@
       </article>
 
       <div class="services-supporting">
-        <article class="service-item">
+        <article class="service-item reveal">
           <p class="service-label">Brand</p>
           <h3>Brand Design</h3>
           <p>Logo, colour palette, and visual guidelines so your business looks consistent across every touchpoint, not just the website.</p>
         </article>
-        <article class="service-item">
+        <article class="service-item reveal">
           <p class="service-label">Social</p>
           <h3>Social Media Management</h3>
           <p>Content planning, copywriting, and scheduling across LinkedIn, Instagram, and Facebook. Available as a monthly retainer.</p>
         </article>
-        <article class="service-item">
+        <article class="service-item reveal">
           <p class="service-label">Tools</p>
           <h3>Custom Marketing Tools</h3>
           <p>Dashboards, automations, and small internal tools built for your specific workflow and team.</p>
@@ -175,46 +183,62 @@
     <h2 class="section-title">Recent projects.</h2>
 
     <ul class="work-list" id="workList">
-      <li class="work-entry">
-        <button class="work-button" type="button" data-id="staffing">
-          <div class="work-body"><h3 class="work-title">Recruitment websites for three sister agencies.</h3></div>
+      <li class="work-entry reveal">
+        <a class="work-link" href="work/staffing/" data-id="staffing" data-thumb="staffing-integrated-800.webp">
+          <div class="work-body">
+            <h3 class="work-title">Recruitment websites for three sister agencies.</h3>
+            <p class="work-meta"><span>Integrated Staffing Group</span><span>Web development</span><span class="work-outcome">15% traffic lift across three brands</span></p>
+          </div>
           <span class="work-arrow" aria-hidden="true">→</span>
-        </button>
+        </a>
       </li>
-      <li class="work-entry">
-        <button class="work-button" type="button" data-id="intelligence">
-          <div class="work-body"><h3 class="work-title">Job intelligence platform for recruiters.</h3></div>
+      <li class="work-entry reveal">
+        <a class="work-link" href="work/intelligence/" data-id="intelligence">
+          <div class="work-body">
+            <h3 class="work-title">Job intelligence platform for recruiters.</h3>
+            <p class="work-meta"><span>Integrated Staffing Group</span><span>Automation</span><span class="work-outcome">6,000+ alerts in its first month</span></p>
+          </div>
           <span class="work-arrow" aria-hidden="true">→</span>
-        </button>
+        </a>
       </li>
-      <li class="work-entry">
-        <button class="work-button" type="button" data-id="allowance">
-          <div class="work-body"><h3 class="work-title">Personal budgeting app.</h3></div>
+      <li class="work-entry reveal">
+        <a class="work-link" href="work/allowance/" data-id="allowance">
+          <div class="work-body">
+            <h3 class="work-title">Personal budgeting app.</h3>
+            <p class="work-meta"><span>Personal project</span><span>Product</span><span class="work-outcome">React and Supabase PWA</span></p>
+          </div>
           <span class="work-arrow" aria-hidden="true">→</span>
-        </button>
+        </a>
       </li>
-      <li class="work-entry">
-        <button class="work-button" type="button" data-id="logodesign">
-          <div class="work-body"><h3 class="work-title">Logo design for an editorial consultancy.</h3></div>
+      <li class="work-entry reveal">
+        <a class="work-link" href="work/logodesign/" data-id="logodesign" data-thumb="logo-cover-800.webp">
+          <div class="work-body">
+            <h3 class="work-title">Logo design for an editorial consultancy.</h3>
+            <p class="work-meta"><span>Claros</span><span>Brand design</span><span class="work-outcome">Stamp-style seal in light and dark</span></p>
+          </div>
           <span class="work-arrow" aria-hidden="true">→</span>
-        </button>
+        </a>
       </li>
-      <li class="work-entry">
-        <button class="work-button" type="button" data-id="wwhra">
-          <div class="work-body"><h3 class="work-title">Website for a residents association.</h3></div>
+      <li class="work-entry reveal">
+        <a class="work-link" href="work/wwhra/" data-id="wwhra">
+          <div class="work-body">
+            <h3 class="work-title">Website for a residents association.</h3>
+            <p class="work-meta"><span>Westwood Hills Residents Association</span><span>Web development</span><span class="work-outcome">Board-run WordPress hub</span></p>
+          </div>
           <span class="work-arrow" aria-hidden="true">→</span>
-        </button>
+        </a>
       </li>
-      <li class="work-entry">
-        <button class="work-button" type="button" data-id="dashboard">
-          <div class="work-body"><h3 class="work-title">Marketing performance dashboard.</h3></div>
+      <li class="work-entry reveal">
+        <a class="work-link" href="work/dashboard/" data-id="dashboard" data-thumb="dashboard-cover-800.webp">
+          <div class="work-body">
+            <h3 class="work-title">Marketing performance dashboard.</h3>
+            <p class="work-meta"><span>Integrated Staffing</span><span>Data &amp; reporting</span><span class="work-outcome">Replaced a manual monthly report</span></p>
+          </div>
           <span class="work-arrow" aria-hidden="true">→</span>
-        </button>
+        </a>
       </li>
     </ul>
-    <noscript>
-      <p class="noscript-note">Case studies open inline with JavaScript enabled. You can still reach out through the contact form below.</p>
-    </noscript>
+    <div class="work-peek" id="workPeek" aria-hidden="true"><img alt="" decoding="async"></div>
   </section>
 
   <!-- CONTACT -->
@@ -304,6 +328,7 @@
     </div>
   </aside>
 
+  <script src="case-studies.js" defer></script>
   <script src="portfolio.js" defer></script>
 </body>
 </html>
