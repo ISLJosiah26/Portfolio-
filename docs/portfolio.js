@@ -1,226 +1,15 @@
 /* =============================================================
-   Portfolio JS. Drawer, deep links, nav, reveal.
-   Case study data lives in case-studies.js (loaded first).
+   Portfolio JS. Nav, contact form, reveal, scroll line.
    ============================================================= */
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* ===== Drawer ===== */
-const drawer = document.getElementById('drawer');
-const backdrop = document.getElementById('drawerBackdrop');
-const drawerContent = document.getElementById('drawerContent');
-const drawerScroll = document.getElementById('drawerScroll');
-const drawerClose = document.getElementById('drawerClose');
-
-/* Asset paths must be root-absolute: once the drawer pushes
-   /work/<id>/ onto the history stack, relative srcs would resolve
-   against that path and 404. */
-function absPath(src) {
-  return (src && !src.startsWith('http') && !src.startsWith('/')) ? `/${src}` : src;
-}
-function absSrcset(srcset) {
-  return srcset.split(',').map((part) => {
-    const [file, size] = part.trim().split(/\s+/);
-    return `${absPath(file)} ${size || ''}`.trim();
-  }).join(', ');
-}
-
-function imageOrPlaceholder(item, classExtra = '') {
-  if (item.src) {
-    const srcset = item.srcset ? ` srcset="${absSrcset(item.srcset)}" sizes="(max-width: 820px) 96vw, 820px"` : '';
-    return `<div class="cs-gallery-item ${classExtra}"><img src="${absPath(item.src)}"${srcset} alt="${item.alt || ''}" loading="lazy" decoding="async"/></div>`;
-  }
-  return `<div class="cs-gallery-item placeholder ${classExtra}"><span class="placeholder-tag">${item.tag || 'image.jpg'}</span></div>`;
-}
-
-function coverOrPlaceholder(item) {
-  if (item && item.src) {
-    const srcset = item.srcset ? ` srcset="${absSrcset(item.srcset)}" sizes="(max-width: 820px) 96vw, 820px"` : '';
-    const natural = item.fit === 'natural' ? ' natural' : '';
-    return `<div class="cs-cover${natural}"><img src="${absPath(item.src)}"${srcset} alt="${item.alt || ''}" loading="lazy" decoding="async"/></div>`;
-  }
-  return `<div class="cs-cover placeholder"><span class="placeholder-tag">${(item && item.tag) || 'cover.jpg'}</span></div>`;
-}
-
-function renderCaseStudy(cs) {
-  const sectionsHTML = cs.sections.map((s) => {
-    const paras = s.body.map((p) => `<p>${p}</p>`).join('');
-    const bullets = s.bullets ? `<ul>${s.bullets.map((b) => `<li>${b}</li>`).join('')}</ul>` : '';
-    return `
-      <section class="cs-section">
-        <p class="cs-section-label">${s.label}</p>
-        ${paras}
-        ${bullets}
-      </section>
-    `;
-  }).join('');
-
-  const quoteHTML = cs.quote ? `
-    <blockquote class="cs-quote">
-      <p class="cs-quote-text">&ldquo;${cs.quote.text}&rdquo;</p>
-      <p class="cs-quote-attr"><strong>${cs.quote.author}</strong> &middot; ${cs.quote.role}</p>
-    </blockquote>
-  ` : '';
-
-  const galleryHTML = cs.gallery && cs.gallery.length ? `
-    <div class="cs-gallery">
-      ${cs.gallery.map((g) => imageOrPlaceholder(g, g.wide ? 'wide' : '')).join('')}
-    </div>
-  ` : '';
-
-  const linksHTML = cs.links && cs.links.length ? `
-    <ul class="cs-links">
-      ${cs.links.map((l) => `
-        <li><a href="${l.href}" target="_blank" rel="noopener">
-          <span>${l.label}</span>
-          <span>${l.meta || ''} ↗</span>
-        </a></li>
-      `).join('')}
-    </ul>
-  ` : '';
-
-  return `
-    ${coverOrPlaceholder(cs.cover)}
-    <div class="cs-body">
-      <div class="cs-meta">
-        <span>${cs.year}</span>
-        <span>${cs.client}</span>
-        <span>${cs.role}</span>
-      </div>
-      <h1 class="cs-title">${cs.title}</h1>
-      <p class="cs-deck">${cs.deck}</p>
-      ${sectionsHTML}
-      ${quoteHTML}
-      ${galleryHTML}
-      ${linksHTML}
-    </div>
-  `;
-}
-
-/* ===== Focus trap helpers ===== */
-let drawerOpener = null;
-
+/* ===== Focus trap helper ===== */
 function getFocusable(container) {
   return [...container.querySelectorAll(
     'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
   )];
 }
-
-function handleDrawerTab(e) {
-  if (e.key !== 'Tab') return;
-  const focusable = getFocusable(drawer);
-  if (!focusable.length) return;
-  const first = focusable[0];
-  const last = focusable[focusable.length - 1];
-  if (e.shiftKey && document.activeElement === first) {
-    e.preventDefault();
-    last.focus();
-  } else if (!e.shiftKey && document.activeElement === last) {
-    e.preventDefault();
-    first.focus();
-  }
-}
-
-/* ===== Open / close, with history deep links =====
-   Opening pushes /work/<id>/ onto the history stack, so the URL is
-   shareable (a real static page lives there) and Back closes the
-   drawer. Closing via UI delegates to history.back() when we own
-   the current history entry. */
-
-function openCaseStudy(id, { push = true } = {}) {
-  const cs = CASE_STUDIES.find((c) => c.id === id);
-  if (!cs) return;
-  drawerOpener = document.activeElement;
-  drawerContent.innerHTML = renderCaseStudy(cs);
-  drawerScroll.scrollTop = 0;
-  drawer.classList.add('open');
-  backdrop.classList.add('open');
-  drawer.setAttribute('aria-hidden', 'false');
-  document.body.classList.add('drawer-open');
-  document.addEventListener('keydown', handleDrawerTab);
-  setTimeout(() => drawerClose.focus(), 50);
-
-  if (push) {
-    history.pushState({ cs: id }, '', `work/${id}/`);
-  }
-
-  const existingCue = drawer.querySelector('.drawer-scroll-cue');
-  if (existingCue) existingCue.remove();
-  const cue = document.createElement('div');
-  cue.className = 'drawer-scroll-cue';
-  cue.setAttribute('aria-hidden', 'true');
-  cue.innerHTML = `
-    <span>Scroll</span>
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-      <path d="M7 2 L7 12 M3 8 L7 12 L11 8"/>
-    </svg>
-  `;
-  drawer.appendChild(cue);
-  setTimeout(() => cue.remove(), 2900);
-}
-
-function doCloseCaseStudy() {
-  drawer.classList.remove('open');
-  backdrop.classList.remove('open');
-  drawer.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('drawer-open');
-  document.removeEventListener('keydown', handleDrawerTab);
-  if (drawerOpener) { drawerOpener.focus(); drawerOpener = null; }
-  const cue = drawer.querySelector('.drawer-scroll-cue');
-  if (cue) cue.remove();
-}
-
-function closeCaseStudy() {
-  if (history.state && history.state.cs) {
-    history.back(); // popstate handler does the closing
-  } else {
-    doCloseCaseStudy();
-  }
-}
-
-window.addEventListener('popstate', (e) => {
-  const id = e.state && e.state.cs;
-  if (id) {
-    openCaseStudy(id, { push: false });
-  } else if (drawer.classList.contains('open')) {
-    doCloseCaseStudy();
-  }
-});
-
-/* Work list + hero proof links open the drawer in place */
-document.querySelectorAll('a[data-id]').forEach((link) => {
-  link.addEventListener('click', (e) => {
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; // let new-tab clicks through
-    e.preventDefault();
-    openCaseStudy(link.dataset.id);
-  });
-});
-
-drawerClose.addEventListener('click', closeCaseStudy);
-backdrop.addEventListener('click', closeCaseStudy);
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && drawer.classList.contains('open')) closeCaseStudy();
-});
-
-/* ===== Work list hover preview ===== */
-(function initWorkPeek() {
-  const peek = document.getElementById('workPeek');
-  if (!peek) return;
-  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const img = peek.querySelector('img');
-
-  document.querySelectorAll('.work-link[data-thumb]').forEach((link) => {
-    link.addEventListener('pointerenter', () => {
-      img.src = absPath(link.dataset.thumb);
-      peek.classList.add('show');
-    });
-    link.addEventListener('pointerleave', () => peek.classList.remove('show'));
-    link.addEventListener('pointermove', (e) => {
-      peek.style.transform = `translate(${e.clientX + 28}px, ${e.clientY - 90}px)`;
-    });
-  });
-})();
 
 /* ===== Mobile nav ===== */
 const hamburger = document.getElementById('navHamburger');
@@ -230,7 +19,7 @@ const siteFooter = document.getElementById('siteFooter');
 let navOpener = null;
 
 function setPageInert(inert) {
-  [siteContent, siteFooter, drawer, backdrop].filter(Boolean).forEach((el) => {
+  [siteContent, siteFooter].filter(Boolean).forEach((el) => {
     if (inert) el.setAttribute('inert', '');
     else el.removeAttribute('inert');
   });
@@ -252,7 +41,6 @@ function handleNavTab(e) {
 }
 
 function openMobileNav() {
-  if (drawer.classList.contains('open')) closeCaseStudy();
   navOpener = document.activeElement;
   navMobile.classList.add('open');
   navMobile.setAttribute('aria-hidden', 'false');
