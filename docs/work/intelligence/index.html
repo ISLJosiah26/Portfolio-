@@ -1,109 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" class="js">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Business Intelligence Program · Josiah Yule</title>
-  <meta name="description" content="A custom web scraping pipeline that monitors Job Bank, LinkedIn, and Adzuna for postings from existing clients, scores each match, and alerts the right consultant before a placement opportunity slips away.">
-  <link rel="canonical" href="https://www.josiahyule.ca/work/intelligence/">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://www.josiahyule.ca/work/intelligence/">
-  <meta property="og:title" content="Business Intelligence Program · Josiah Yule">
-  <meta property="og:description" content="A custom web scraping pipeline that monitors Job Bank, LinkedIn, and Adzuna for postings from existing clients, scores each match, and alerts the right consultant before a placement opportunity slips away.">
-  <meta property="og:image" content="https://www.josiahyule.ca/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Business Intelligence Program · Josiah Yule">
-  <meta name="twitter:description" content="A custom web scraping pipeline that monitors Job Bank, LinkedIn, and Adzuna for postings from existing clients, scores each match, and alerts the right consultant before a placement opportunity slips away.">
-  <meta name="twitter:image" content="https://www.josiahyule.ca/og-image.png">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f7f4ef" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#141311" media="(prefers-color-scheme: dark)">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="/fonts/spacegrotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/dmsans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/portfolio.css">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": "Business Intelligence Program.",
-    "description": "A custom web scraping pipeline that monitors Job Bank, LinkedIn, and Adzuna for postings from existing clients, scores each match, and alerts the right consultant before a placement opportunity slips away.",
-    "url": "https://www.josiahyule.ca/work/intelligence/",
-    "dateCreated": "2026",
-    "creator": {
-      "@type": "Person",
-      "name": "Josiah Yule",
-      "url": "https://www.josiahyule.ca"
-    },
-    "genre": "Automation"
-  }
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Josiah Yule</title>
+  <link rel="canonical" href="https://www.josiahyule.ca/">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url=/#work">
+  <script>location.replace('/#work');</script>
 </head>
-<body class="case-page">
-  <a href="#csContent" class="skip-link">Skip to content</a>
-
-  <nav>
-    <a href="/" class="nav-logo">Josiah Yule</a>
-    <div class="nav-links">
-      <a href="/#work">All work</a>
-      <a href="/#contact" class="nav-cta">Get in touch</a>
-    </div>
-  </nav>
-
-  <main id="csContent">
-    
-    <div class="cs-body">
-      <a href="/#work" class="cs-back">&larr; All work</a>
-      <div class="cs-meta">
-        <span>2026</span>
-        <span>Integrated Staffing Group</span>
-        <span>Product & Development</span>
-      </div>
-      <h1 class="cs-title">Business Intelligence Program.</h1>
-      <p class="cs-deck">A custom web scraping pipeline that monitors Job Bank, LinkedIn, and Adzuna for postings from existing clients, scores each match, and alerts the right consultant before a placement opportunity slips away.</p>
-      <section class="cs-section">
-        <p class="cs-section-label">The problem</p>
-        <p>Recruitment consultants at the three sister agencies had a blind spot: existing clients posting jobs on public boards, often with competitors. Their CRM had no way to catch this.</p>
-        <p>When a client is actively hiring, a recruitment agency has real leverage. A consultant who calls the day a role goes live is in a far better position than one who finds out weeks later, or not at all.</p>
-      </section>
-      <section class="cs-section">
-        <p class="cs-section-label">What it does</p>
-        <p>ClientWatch monitors Job Bank, LinkedIn, and Adzuna for new postings, cross-references each one against the client list across all three agencies, and alerts the right consultant when a match is found.</p>
-        <p>Matches are confidence-scored using normalisation logic, so a posting from a known client is recognised even when the company name is formatted differently from one board to the next.</p>
-      </section>
-      <section class="cs-section">
-        <p class="cs-section-label">How it works</p>
-        <p>A custom scraping pipeline pulls postings from each source on a recurring schedule, with deduplication and rate limiting built in to stay reliable and avoid hammering the boards.</p>
-        <p>Confirmed matches are pushed to consultants through Slack integrations across two workspaces and rolled up into an automated digest email every morning. A multi-user dashboard, backed by Supabase, gives the team a shared view of every alert.</p>
-      </section>
-      <section class="cs-section">
-        <p class="cs-section-label">Stack</p>
-        <p>A Python scraping pipeline with Slack API integrations and a Supabase-backed dashboard. Built and maintained solo as a focused tool for a specific workflow.</p>
-        <ul><li>Monitors Job Bank, LinkedIn, and Adzuna on a schedule</li><li>Confidence-scored client matching with normalisation logic</li><li>Slack alerts across two workspaces and automated morning digest emails</li><li>Deduplication, rate limiting, and a multi-user Supabase dashboard</li></ul>
-      </section>
-      <section class="cs-section">
-        <p class="cs-section-label">Outcome</p>
-        <p>Generated over 6,000 alerts in its first month across the three agencies.</p>
-      </section>
-
-
-    </div>
-  </main>
-
-  <div class="cs-next">
-    <a href="/work/allowance/">
-      <span>
-        <span class="cs-next-label">Next project</span>
-        <span class="cs-next-title">Personal budgeting app.</span>
-      </span>
-      <span class="cs-next-arrow" aria-hidden="true">&rarr;</span>
-    </a>
-  </div>
-
-  <footer id="siteFooter">
-    <span>&copy; <span id="year"></span> Josiah Yule</span>
-    <span>Halifax, NS</span>
-  </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<body>
+  <p>This page has moved. <a href="/#work">View my work</a>.</p>
 </body>
 </html>
